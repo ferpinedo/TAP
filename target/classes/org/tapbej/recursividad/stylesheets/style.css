@@ -1,0 +1,37 @@
+.inner-pane {
+    -fx-background-color: #e8e8e8;
+    -fx-background-radius: 10;
+    -fx-border-color: gray;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+}
+
+.brown-pane
+{
+    -fx-background-color: #9E978E;
+}
+
+.black-pane
+{
+    -fx-background-color: #2d2d2d;
+}
+
+.white-pane
+{
+    -fx-background-color: #ECF0F1  ;
+}
+
+.ready-pane {
+    -fx-background-color: #c6e5a9;
+    -fx-background-radius: 10;
+}
+
+.failure-pane {
+    -fx-background-color: #db9999;
+    -fx-background-radius: 10;
+}
+
+.info-popup {
+    -fx-background-color: #5e9dd3;
+    -fx-background-radius: 10;
+}
