@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tapbej.recursividad.ordenamiento.BarChartController">
+   <children>
+      <GridPane layoutX="113.0" layoutY="205.0" prefHeight="519.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.0" minWidth="10.0" prefWidth="33.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="435.0" minWidth="10.0" prefWidth="328.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="347.0" minWidth="10.0" prefWidth="339.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="122.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="327.0" minHeight="10.0" prefHeight="179.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="222.0" minHeight="10.0" prefHeight="222.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <StackedBarChart fx:id="StackedBarChart" animated="false" horizontalGridLinesVisible="false" legendVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis opacity="0.0" side="LEFT" visible="false" />
+              </yAxis>
+            </StackedBarChart>
+            <BarChart fx:id="BarChart1" horizontalGridLinesVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis opacity="0.0" prefHeight="132.0" prefWidth="0.0" side="LEFT" />
+              </yAxis>
+            </BarChart>
+            <BarChart fx:id="BarChart3" horizontalGridLinesVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis opacity="0.0" prefHeight="132.0" prefWidth="0.0" side="LEFT" />
+               </yAxis>
+            </BarChart>
+            <BarChart fx:id="BarChart111" horizontalGridLinesVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis opacity="0.0" prefHeight="132.0" prefWidth="0.0" side="LEFT" />
+               </yAxis>
+            </BarChart>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
