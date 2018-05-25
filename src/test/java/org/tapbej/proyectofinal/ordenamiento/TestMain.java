@@ -27,7 +27,7 @@ public class TestMain extends Application
 		primaryStage = new Stage();
 		primaryStage.setScene(new Scene(ventana));
 		primaryStage.show();
-//		MenuControlador controlador = loader.getController();
+		BarChartController controlador = loader.getController();
 	}
 
 	@Override

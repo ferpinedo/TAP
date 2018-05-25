@@ -32,7 +32,7 @@
                 <NumberAxis opacity="0.0" side="LEFT" visible="false" />
               </yAxis>
             </StackedBarChart>
-            <BarChart fx:id="BarChart1" horizontalGridLinesVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <BarChart fx:id="barChart1" alternativeRowFillVisible="false" animated="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -40,7 +40,7 @@
                 <NumberAxis opacity="0.0" prefHeight="132.0" prefWidth="0.0" side="LEFT" />
               </yAxis>
             </BarChart>
-            <BarChart fx:id="BarChart3" horizontalGridLinesVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <BarChart fx:id="barChart2" horizontalGridLinesVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -48,7 +48,7 @@
                   <NumberAxis opacity="0.0" prefHeight="132.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart fx:id="BarChart111" horizontalGridLinesVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <BarChart fx:id="barChart3" horizontalGridLinesVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
