@@ -1,4 +1,4 @@
-package org.tapbej.recursividad.modelo;
+package org.tapbej.proyectofinal.modelo;
 
 import javafx.scene.layout.VBox;
 

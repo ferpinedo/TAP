@@ -1,4 +1,4 @@
-package org.tapbej.recursividad.modelo;
+package org.tapbej.proyectofinal.modelo;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -7,7 +7,6 @@ import java.util.Queue;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;

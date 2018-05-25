@@ -1,4 +1,4 @@
-package org.tapbej.recursividad.controlador;
+package org.tapbej.proyectofinal.controlador;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
-import org.tapbej.recursividad.modelo.Hanoi;
+import org.tapbej.proyectofinal.modelo.Hanoi;
 
 
 public class HanoiControlador

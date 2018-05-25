@@ -1,7 +1,7 @@
-package org.tapbej.recursividad.controlador;
+package org.tapbej.proyectofinal.controlador;
 
 import javafx.fxml.FXML;
-import org.tapbej.recursividad.Main;
+import org.tapbej.proyectofinal.Main;
 
 public class MenuControlador
 {

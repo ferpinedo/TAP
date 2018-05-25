@@ -1,4 +1,4 @@
-package org.tapbej.recursividad.util;
+package org.tapbej.proyectofinal.util;
 
 
 import javafx.animation.KeyFrame;
@@ -12,9 +12,9 @@ import javafx.stage.Popup;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.tapbej.recursividad.Main;
-import org.tapbej.recursividad.controlador.PopupController;
-import org.tapbej.recursividad.controlador.PopupWithHeaderController;
+import org.tapbej.proyectofinal.Main;
+import org.tapbej.proyectofinal.controlador.PopupController;
+import org.tapbej.proyectofinal.controlador.PopupWithHeaderController;
 
 import java.io.IOException;
 

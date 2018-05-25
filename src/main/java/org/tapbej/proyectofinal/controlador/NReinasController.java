@@ -1,4 +1,4 @@
-package org.tapbej.recursividad.controlador;
+package org.tapbej.proyectofinal.controlador;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.*;
 import javafx.scene.shape.Circle;
-import org.tapbej.recursividad.Main;
+import org.tapbej.proyectofinal.Main;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -14,8 +14,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
-import org.tapbej.recursividad.util.NQueensSolver;
-import org.tapbej.recursividad.util.Popups;
+import org.tapbej.proyectofinal.util.NQueensSolver;
+import org.tapbej.proyectofinal.util.Popups;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -345,7 +345,7 @@ public class NReinasController
    /**
     * Intenta colocar las reinas en el tablero, validando que todas las reinas estén a salvo
     * en las casillas colocadas.
-    * Utiliza recursividad.
+    * Utiliza proyectofinal.
     * @param reina número de reina que será colocada
     * @param n número de reinas en total
     * @return boolean si se pudieron colocar las reinas o no

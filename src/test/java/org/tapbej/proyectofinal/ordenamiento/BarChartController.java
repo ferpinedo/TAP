@@ -1,4 +1,4 @@
-package org.tapbej.recursividad.ordenamiento;
+package org.tapbej.proyectofinal.ordenamiento;
 
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;

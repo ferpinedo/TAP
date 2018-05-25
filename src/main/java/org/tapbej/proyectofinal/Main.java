@@ -1,4 +1,4 @@
-package org.tapbej.recursividad;
+package org.tapbej.proyectofinal;
 
 import java.io.IOException;
 
@@ -7,8 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.tapbej.recursividad.controlador.MenuControlador;
-import org.tapbej.recursividad.controlador.NReinasController;
+import org.tapbej.proyectofinal.controlador.MenuControlador;
+import org.tapbej.proyectofinal.controlador.NReinasController;
 
 
 public class Main extends Application
