@@ -25,7 +25,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -33,7 +33,7 @@
                 <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
               </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="1">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="1">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -41,7 +41,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="2">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="2">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -49,7 +49,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="3">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="3">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -57,7 +57,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="4">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="4">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -65,7 +65,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.rowIndex="1">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.rowIndex="1">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -73,7 +73,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -81,7 +81,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -89,7 +89,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="410.0" layoutY="135.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="410.0" layoutY="135.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -97,7 +97,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -105,7 +105,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.rowIndex="2">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.rowIndex="2">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -113,7 +113,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -121,7 +121,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -129,7 +129,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="410.0" layoutY="259.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="410.0" layoutY="259.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -137,7 +137,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -145,7 +145,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.rowIndex="3">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.rowIndex="3">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -153,7 +153,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -161,7 +161,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -169,7 +169,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="10.0" layoutY="10.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -177,7 +177,7 @@
                   <NumberAxis opacity="0.0" prefHeight="122.0" prefWidth="0.0" side="LEFT" />
                </yAxis>
             </BarChart>
-            <BarChart animated="false" barGap="1.0" horizontalGridLinesVisible="false" layoutX="610.0" layoutY="383.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalZeroLineVisible="false" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <BarChart alternativeRowFillVisible="false" animated="false" barGap="1.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="610.0" layoutY="383.0" legendVisible="false" minHeight="0.0" minWidth="0.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
