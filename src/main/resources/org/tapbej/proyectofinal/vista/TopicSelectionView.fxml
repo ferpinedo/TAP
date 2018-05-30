@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.tapbej.proyectofinal.vista.TopicSelectionView"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tapbej.proyectofinal.vista.TopicSelectionView">
+   <children>
+      <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="50.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="230.0" text="Recursividad" textAlignment="CENTER">
+                     <font>
+                        <Font name="Roboto" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="109.0" layoutY="198.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="230.0" text="Ordenamiento" textAlignment="CENTER">
+                     <font>
+                        <Font name="Roboto" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="109.0" layoutY="210.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="230.0" text="Búsqueda" textAlignment="CENTER">
+                     <font>
+                        <Font name="Roboto" size="19.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <Separator maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="340.0" prefWidth="6.0" />
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="300.0">
+               <children>
+                  <Label prefHeight="272.0" prefWidth="229.0" text="Label" textAlignment="JUSTIFY" wrapText="true" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

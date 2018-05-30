@@ -25,7 +25,7 @@ public class Main extends Application
 	public void start(Stage primaryStage) throws Exception
 	{
 		this.primaryStage = primaryStage;
-      this.primaryStage.setTitle("Recursividad");
+      this.primaryStage.setTitle("Tópicos Avanzados de Programación");
       
       mostrarVistaPrincipal();
 	}
@@ -36,7 +36,7 @@ public class Main extends Application
 		try
       {
          FXMLLoader loader = new FXMLLoader();
-         loader.setLocation(Main.class.getResource("vista/MenuView.fxml"));
+         loader.setLocation(Main.class.getResource("vista/RecursionMenuView.fxml"));
          AnchorPane ventana = (AnchorPane) loader.load();
 
          primaryStage.setScene(new Scene(ventana));
