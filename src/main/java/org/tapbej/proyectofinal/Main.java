@@ -30,7 +30,7 @@ public class Main extends Application
 	}
 	
 	
-	private void showTopicSelectionView()
+	public void showTopicSelectionView()
 	{
 		try
       {
