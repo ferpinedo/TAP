@@ -6,19 +6,16 @@ import org.tapbej.proyectofinal.Main;
 public class RecursionController extends Controller
 {
 
-	private Main main;
-
-
 	@FXML
 	public void handleHanoi()
 	{
-		main.showHanoi();
+		mainApp.showHanoi();
 	}
 
 	@FXML
 	public void handleNReinas()
 	{
-		main.mostrarNReinas();
+		mainApp.mostrarNReinas();
 	}
 
 	@Override
