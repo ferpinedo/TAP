@@ -3,24 +3,39 @@ package org.tapbej.proyectofinal.controlador;
 import javafx.fxml.FXML;
 import org.tapbej.proyectofinal.Main;
 
-public class MenuControlador
+public class RecursionController extends Controller
 {
 
 	private Main main;
-	public void setMain(Main main)
-	{
-		this.main = main;
-	}
+
 
 	@FXML
 	public void handleHanoi()
 	{
-		main.mostrarHanoi();
+		main.showHanoi();
 	}
 
 	@FXML
 	public void handleNReinas()
 	{
 		main.mostrarNReinas();
+	}
+
+	@Override
+	void setKeyListener()
+	{
+
+	}
+
+	@Override
+	void setDefaultCloseOperation()
+	{
+
+	}
+
+	@Override
+	void runSpecificOperations()
+	{
+
 	}
 }

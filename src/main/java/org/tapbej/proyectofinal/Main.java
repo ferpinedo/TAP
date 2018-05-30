@@ -7,8 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.tapbej.proyectofinal.controlador.MenuControlador;
-import org.tapbej.proyectofinal.controlador.NReinasController;
+import org.tapbej.proyectofinal.controlador.Controller;
 
 
 public class Main extends Application
@@ -22,27 +21,27 @@ public class Main extends Application
 
 
 	@Override
-	public void start(Stage primaryStage) throws Exception
+	public void start(Stage primaryStage)
 	{
 		this.primaryStage = primaryStage;
       this.primaryStage.setTitle("Tópicos Avanzados de Programación");
       
-      mostrarVistaPrincipal();
+      showTopicSelectionView();
 	}
 	
 	
-	private void mostrarVistaPrincipal()
+	private void showTopicSelectionView()
 	{
 		try
       {
          FXMLLoader loader = new FXMLLoader();
-         loader.setLocation(Main.class.getResource("vista/RecursionMenuView.fxml"));
-         AnchorPane ventana = (AnchorPane) loader.load();
+         loader.setLocation(Main.class.getResource("vista/TopicSelectionView.fxml"));
+         AnchorPane ventana = loader.load();
 
          primaryStage.setScene(new Scene(ventana));
          primaryStage.show();
-         MenuControlador controlador = loader.getController();
-         controlador.setMain(this);
+         Controller controller = loader.getController();
+         controller.start(this);
 
       }
 		catch (IOException e)
@@ -52,13 +51,76 @@ public class Main extends Application
 	}
 
 
-	public void mostrarHanoi()
+	public void showRecursionView()
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("vista/RecursionView.fxml"));
+			AnchorPane ventana = loader.load();
+
+			primaryStage.setScene(new Scene(ventana));
+			primaryStage.show();
+			Controller controller = loader.getController();
+			controller.start(this);
+
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+	public void showSortingView()
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("vista/SortingView.fxml"));
+			AnchorPane ventana = loader.load();
+
+			primaryStage.setScene(new Scene(ventana));
+			primaryStage.show();
+			Controller controller = loader.getController();
+			controller.start(this);
+
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public void showSearchView()
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("vista/SearchView.fxml"));
+			AnchorPane ventana = loader.load();
+
+			primaryStage.setScene(new Scene(ventana));
+			primaryStage.show();
+			Controller controller = loader.getController();
+			controller.start(this);
+
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+
+	public void showHanoi()
 	{
 		try
 		{
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("vista/TorresHanoiView.fxml"));
-			AnchorPane ventana = (AnchorPane) loader.load();
+			AnchorPane ventana = loader.load();
 			Stage hanoiStage = new Stage();
 			hanoiStage.setScene(new Scene(ventana));
 			hanoiStage.show();
@@ -70,16 +132,18 @@ public class Main extends Application
 		}
 	}
 
+
+
 	public void mostrarNReinas()
 	{
 		try
 		{
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("vista/NReinasView.fxml"));
-			AnchorPane ventana = (AnchorPane) loader.load();
+			AnchorPane ventana = loader.load();
 
-			NReinasController controlador = loader.getController();
-			controlador.setMainApp(this);
+			Controller controlador = loader.getController();
+			controlador.start(this);
 
 			Stage nReiansStage = new Stage();
 			nReiansStage.setScene(new Scene(ventana));
