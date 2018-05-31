@@ -18,8 +18,10 @@ public class Sorter
 	private Deque<int[]> pasos;
 	private SortMethod method;
 	private int[] data;
+	private double transcurredMicros;
+	private long totalMovements;
 
-	public Sorter(SortMethod method, int[] data)
+	public Sorter(int[] data, SortMethod method)
 	{
 		this.method = method;
 		this.pasos = new ArrayDeque<>();
@@ -28,7 +30,7 @@ public class Sorter
 	}
 
 
-	public long sort()
+	public void sort()
 	{
 		long initialTime = System.nanoTime();
 
@@ -49,23 +51,24 @@ public class Sorter
 		}
 		long endTime = System.nanoTime();
 		System.out.println("Initial nano secs: " + initialTime + " | End nano secs: " + endTime);
-		return endTime - initialTime;
+		transcurredMicros = (endTime - initialTime) / 1000;
+		totalMovements = pasos.size();
 	}
 
 
 	/**
 	 * Intercambia dos valores de un arreglo determinado y agrega la animación o paso a la UI
 	 *
-	 * @param datos arreglo de valores
+	 * @param data arreglo de valores
 	 * @param i     posición uno a intercambiar
 	 * @param j     posición dos a intercambiar
 	 */
-	private void intercambiarDatos(int[] datos, int i, int j)
+	private void intercambiarDatos(int[] data, int i, int j)
 	{
 		pasos.add(new int[]{i, j});
-		int temp = datos[i];
-		datos[i] = datos[j];
-		datos[j] = temp;
+		int temp = data[i];
+		data[i] = data[j];
+		data[j] = temp;
 	}
 
 
@@ -75,25 +78,25 @@ public class Sorter
 	 * parte.
 	 * También llamado "Selection search"
 	 *
-	 * @param numeros arreglo de enteros a ordenar
+	 * @param data arreglo de enteros a ordenar
 	 */
-	public void seleccionDirecta(int[] numeros)
+	private void seleccionDirecta(int[] data)
 	{
 		// Uno por uno se verifican los elementos del arreglo si están ordenada
-		for (int i = 0; i < numeros.length - 1; i++)
+		for (int i = 0; i < data.length - 1; i++)
 		{
 			// Se busca el índice del número más pequeño de la parte no ordenada
 			int indiceMinimo = i; // Se inicializa el valor mínimo
-			for (int j = i + 1; j < numeros.length; j++)
+			for (int j = i + 1; j < data.length; j++)
 			{
-				if (numeros[j] < numeros[indiceMinimo])
+				if (data[j] < data[indiceMinimo])
 					indiceMinimo = j;
 			}
 			// Si se encuentra un número menor al que se encuentra en la posición actual a verificar,
 			// se intercambian los valores
 			if (indiceMinimo != i)
 			{
-				intercambiarDatos(numeros, indiceMinimo, i);
+				intercambiarDatos(data, indiceMinimo, i);
 			}
 		}
 	}
@@ -103,20 +106,20 @@ public class Sorter
 	 * Compara valores adyaccentes y los intercambia si no están ordenados correctamente
 	 * También llamado "Bubble search"
 	 *
-	 * @param numeros arreglo de enteros a ordenar
+	 * @param data arreglo de enteros a ordenar
 	 */
-	public void intercambioDirecto(int[] numeros)
+	private void intercambioDirecto(int[] data)
 	{
 		// Ordena de la última posición a la primera
-		for(int i=0; i < numeros.length; i++)
+		for(int i=0; i < data.length; i++)
 		{
 			// Verifica que estén ordenados los valores adyacentes de la parte no ordenada
-			for (int j = 1; j < (numeros.length - i); j++)
+			for (int j = 1; j < (data.length - i); j++)
 			{
-				if (numeros[j - 1] > numeros[j])
+				if (data[j - 1] > data[j])
 				{
 					// Intercambia los valores no ordenados
-					intercambiarDatos(numeros, j, j - 1);
+					intercambiarDatos(data, j, j - 1);
 				}
 
 			}
@@ -128,16 +131,16 @@ public class Sorter
 	 * Se inserta elemento por elmento en su posición correcta.
 	 * También llamado "Insertion search" o "Baraja"
 	 *
-	 * @param numeros arreglo de enteros a ordenar
+	 * @param data arreglo de enteros a ordenar
 	 */
-	public void insercionDirecta(int[] numeros)
+	private void insercionDirecta(int[] data)
 	{
-		for (int i = 1; i < numeros.length; i++)
+		for (int i = 1; i < data.length; i++)
 		{
 			// busca e intercambia las posiciones que estén en desorden yendo de uno en uno
-			for (int j = i; j > 0 && numeros[j] < numeros[j - 1]; j--)
+			for (int j = i; j > 0 && data[j] < data[j - 1]; j--)
 			{
-				intercambiarDatos(numeros, j, j-1);
+				intercambiarDatos(data, j, j-1);
 			}
 		}
 	}
@@ -148,45 +151,45 @@ public class Sorter
 	 * viceversa hasta terminar de ordenarlos.
 	 * También llamado "Burbuja bidireccional"
 	 *
-	 * @param datos arreglo de enteros a ordenar
+	 * @param data arreglo de enteros a ordenar
 	 */
-	public void shakerSort(int[] datos)
+	private void shakerSort(int[] data)
 	{
 		int limitador = 0;
 		do
 		{
-			for (int i = limitador; i < datos.length - (limitador + 1); i++)
+			for (int i = limitador; i < data.length - (limitador + 1); i++)
 			{
-				if (datos[i] > datos[i + 1])
-					intercambiarDatos(datos, i, i + 1);
+				if (data[i] > data[i + 1])
+					intercambiarDatos(data, i, i + 1);
 			}
 
-			for (int i = datos.length - (limitador + 1); i > limitador; i--)
+			for (int i = data.length - (limitador + 1); i > limitador; i--)
 			{
-				if (datos[i] < datos[i - 1])
-					intercambiarDatos(datos, i, i - 1);
+				if (data[i] < data[i - 1])
+					intercambiarDatos(data, i, i - 1);
 			}
 			limitador++;
 
-		} while (limitador != datos.length / 2);
+		} while (limitador != data.length / 2);
 	}
 
-	public  void quicksort(int[] vector, int first, int last)
+	private  void quicksort(int[] data, int first, int last)
 	{
 		int i = first, j = last;
-		int pivote = vector[(first + last) / 2];
+		int pivote = data[(first + last) / 2];
 		int auxiliar;
 
 		do
 		{
-			while (vector[i] < pivote) i++;
-			while (vector[j] > pivote) j--;
+			while (data[i] < pivote) i++;
+			while (data[j] > pivote) j--;
 
 			if (i <= j)
 			{
-				auxiliar = vector[j];
-				vector[j] = vector[i];
-				vector[i] = auxiliar;
+				auxiliar = data[j];
+				data[j] = data[i];
+				data[i] = auxiliar;
 				i++;
 				j--;
 			}
@@ -195,12 +198,12 @@ public class Sorter
 
 		if (first < j)
 		{
-			quicksort(vector, first, j);
+			quicksort(data, first, j);
 		}
 
 		if (last > i)
 		{
-			quicksort(vector, i, last);
+			quicksort(data, i, last);
 		}
 	}
 
@@ -209,62 +212,60 @@ public class Sorter
 	 * Es un algoritmo de ordenación recursivo con un número de comparaciones entre elementos del array mínimo.
 	 * Su funcionamiento es similar al Quicksort, y está basado en la técnica divide y vencerás.
 	 *
-	 * @param arreglo   referencia del arreglo a ordenar
+	 * @param data   referencia del arreglo a ordenar
 	 * @param izquierda límite izquierdo
 	 * @param derecha   límite derecho
 	 */
-	public void mergesort(int arreglo[], int izquierda, int derecha)
+	private void mergesort(int data[], int izquierda, int derecha)
 	{
 		if (izquierda < derecha)
 		{
 			int m = (izquierda + derecha) / 2;
-			mergesort(arreglo, izquierda, m);
-			mergesort(arreglo, m + 1, derecha);
-			merge(arreglo, izquierda, m, derecha);
+			mergesort(data, izquierda, m);
+			mergesort(data, m + 1, derecha);
+			merge(data, izquierda, m, derecha);
 		}
 	}
 
 
-	public void merge(int arreglo[], int izquierda, int m, int derecha)
+	private void merge(int data[], int izquierda, int m, int derecha)
 	{
 		int i, j, k;
-		int[] B = new int[arreglo.length]; //array auxiliar
+		int[] B = new int[data.length]; //array auxiliar
 		for (i = izquierda; i <= derecha; i++) //copia ambas mitades en el array auxiliar
-			B[i] = arreglo[i];
+			B[i] = data[i];
 
 		i = izquierda;
 		j = m + 1;
 		k = izquierda;
 		while (i <= m && j <= derecha) //copia el siguiente elemento más grande
 			if (B[i] <= B[j])
-				arreglo[k++] = B[i++];
+				data[k++] = B[i++];
 			else
-				arreglo[k++] = B[j++];
+				data[k++] = B[j++];
 		while (i <= m) //copia los elementos que quedan de la
-			arreglo[k++] = B[i++]; //primera mitad (si los hay)
+			data[k++] = B[i++]; //primera mitad (si los hay)
 	}
 
 	/**
 	 * Este algoritmo consiste en almacenar todos los elementos del vector a ordenar en un montículo (heap)
 	 * y luego extraer el nodo que queda como nodo raíz del montículo (cima) en sucesivas iteraciones obteniendo
 	 * el conjunto ordenado
-	 *
-	 * @param arreglo referencia del arreglo que será ordenado
 	 */
-	public void ordenacionMonticulos(int[] arreglo)
+	private void ordenacionMonticulos()
 	{
-		final int N = arreglo.length;
-		for (int nodo = N / 2; nodo >= 0; nodo--) hacerMonticulo(arreglo, nodo, N - 1);
+		final int N = data.length;
+		for (int nodo = N / 2; nodo >= 0; nodo--) hacerMonticulo(data, nodo, N - 1);
 		for (int nodo = N - 1; nodo >= 0; nodo--)
 		{
-			int tmp = arreglo[0];
-			arreglo[0] = arreglo[nodo];
-			arreglo[nodo] = tmp;
-			hacerMonticulo(arreglo, 0, nodo - 1);
+			int tmp = data[0];
+			data[0] = data[nodo];
+			data[nodo] = tmp;
+			hacerMonticulo(data, 0, nodo - 1);
 		}
 	}
 
-	public void hacerMonticulo(int[] v, int nodo, int fin)
+	private void hacerMonticulo(int[] v, int nodo, int fin)
 	{
 		int izq = 2 * nodo + 1;
 		int der = izq + 1;
@@ -287,10 +288,8 @@ public class Sorter
 	 * a las colas, se recorren todas las colas en orden trasladando ahora los elementos al vector. El
 	 * proceso se repite ahora para los demás dígitos de los elementos del vector.
 	 * También conocido como ordenación por residuos.
-	 *
-	 * @param arreglo referencia del arreglo que será ordenado
 	 */
-	public void radixSort(int[] arreglo)
+	private void radixSort()
 	{
 		int max = 1;     // cantidad de repeticiones
 		int nbytes = 4;     // numero de bytes a desplazar
@@ -304,7 +303,7 @@ public class Sorter
 		{
 			// parte 1: recorrer el vector  para guardar cada elemento
 			// en la cola correspondiente
-			for (int numero : arreglo)
+			for (int numero : data)
 			{
 				// buscar el mayor número del vector
 				if (i == 0) if (numero > max) max = numero;
@@ -319,7 +318,7 @@ public class Sorter
 			int j = 0;
 			for (Queue<Integer> c : cola)
 			{
-				while (!c.isEmpty()) arreglo[j++] = c.remove();
+				while (!c.isEmpty()) data[j++] = c.remove();
 			}
 			// la primera vez se actualiza el número de veces que se
 			// debe ejecutar el proceso
@@ -336,8 +335,14 @@ public class Sorter
 		return pasos;
 	}
 
-	public void setPasos(Deque<int[]> pasos)
+	public double getTranscurredMicros()
 	{
-		this.pasos = pasos;
+		return transcurredMicros;
 	}
+
+	public long getTotalMovements()
+	{
+		return totalMovements;
+	}
+
 }

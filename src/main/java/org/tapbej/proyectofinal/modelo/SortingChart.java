@@ -11,33 +11,48 @@ import javafx.util.Duration;
 import org.tapbej.proyectofinal.util.Sorter;
 
 import java.util.Deque;
-import java.util.Queue;
 
 public class SortingChart extends BarChart
 {
-	private int[] bars;
+	private Bar[] bars;
 	private Sorter sorter;
 	private Timeline timeline;
 
+	private String movingColor = "red";
+	private String defaultColor = "#000000";
+	private String finishColor = "blue";
 
-	// TODO: java doc
-	public SortingChart(int[] bars, SortMethod method)
+	private int cursorBar = 0;
+
+	public SortingChart()
 	{
 		super(new CategoryAxis(), new NumberAxis());
-		this.bars = new int[bars.length];
-		System.arraycopy(bars, 0, this.bars, 0, bars.length);
+	}
 
-		this.sorter = new Sorter(method, bars);
+	/**
+	 * Constructor for SortingChart
+	 * @param values array of values thar are going to be graphed
+	 * @param method the method used to sort the bars
+	 */
+	public SortingChart(int[] values, SortMethod method)
+	{
+		super(new CategoryAxis(), new NumberAxis());
+		this.bars = new Bar[values.length];
+		for (int i = 0; i < bars.length; i++)
+			this.bars[i] = new Bar(values[i], defaultColor);
+
+		this.sorter = new Sorter(values, method);
 		graphArray();
 		setDefaults();
 	}
 
-	// TODO: java doc & tracking
+	/**
+	 * Sort the bars of the bar chart
+	 * @param interval of time to use for each movement
+	 */
 	public void sort(int interval)
 	{
-		double timePassed = sorter.sort() ;
-		setTimePassed(timePassed);
-
+		sorter.sort();
 		Deque<int[]> pasos = sorter.getPasos();
 
 		timeline = new Timeline(new KeyFrame(Duration.millis(interval), action ->
@@ -52,10 +67,12 @@ public class SortingChart extends BarChart
 				}
 				else
 				{
+					bars[cursorBar].setColor(defaultColor);
+					colorizeAllBars(finishColor);
+					showStats(sorter.getTranscurredMicros(), sorter.getTotalMovements());
 					timeline.stop();
 				}
-			}
-			catch (Exception e)
+			} catch (Exception e)
 			{
 				e.printStackTrace();
 			}
@@ -73,43 +90,60 @@ public class SortingChart extends BarChart
 		this.setAnimated(false);
 		this.setLegendVisible(false);
 		hideAxis();
-		setGaps(1,1);
+		setGaps(1, 1);
 	}
 
 	/**
 	 * Swap two bars position.
+	 *
 	 * @param firstPosition
 	 * @param secondPosition
 	 */
 	public void swapBars(int firstPosition, int secondPosition)
 	{
-		Integer temp = bars[firstPosition];
-		bars[firstPosition] =  bars[secondPosition];
+		bars[cursorBar].setColor(defaultColor);
+
+		Bar temp = bars[firstPosition];
+		cursorBar = firstPosition;
+		bars[firstPosition] = bars[secondPosition];
+		bars[firstPosition].setColor(movingColor);
 		bars[secondPosition] = temp;
 		graphArray();
 	}
 
 	/**
 	 * Colorizes bar
+	 *
 	 * @param position
 	 * @param color
 	 */
 	public void colorizeBar(int position, String color)
 	{
-		final Data<String, Number> bar = (Data<String, Number>) ((Series)  this.getData().get(0)).getData().get(position);
-		System.out.println("Colorizing bar " + position + " (value: " + bar.getYValue() + ") to color " + color);
+		bars[position].setColor(color);
+		graphArray();
+	}
 
-		bar.getNode().setStyle("-fx-bar-fill: " + color + ";");
-
+	/**
+	 * Colorize all bars
+	 *
+	 * @param color
+	 */
+	public void colorizeAllBars(String color)
+	{
+		for (int i = 0; i < bars.length; i++)
+			this.bars[i].setColor(color);
+		graphArray();
 	}
 
 	/**
 	 * Sets and displays time passed
-	 * @param timePassed
+	 *
+	 * @param microsPassed til bar chart sorted
+	 * @param movements used to sort the bar chart
 	 */
-	public void setTimePassed(double timePassed)
+	public void showStats(double microsPassed, long movements)
 	{
-		this.setTitle(timePassed + "ns");
+		this.setTitle(microsPassed + "micros, en " + movements + " movimientos");
 	}
 
 	/**
@@ -129,15 +163,23 @@ public class SortingChart extends BarChart
 		this.getData().clear();
 		int position = 0;
 		Series<String, Number> dataSeries = new Series<>();
-		for (int item: bars)
+		for (Bar bar : bars)
 		{
-			dataSeries.getData().add(new Data<>(position + "", item));
-//			System.out.println("Bar added: <" + position + ", " + item + ">" );
+			dataSeries.getData().add(new Data<>(position + "", bar.getValue()));
 			position++;
 		}
 		this.getData().add(dataSeries);
+
+		position = 0;
+		for (Bar bar : bars)
+		{
+			final Data<String, Number> chartBar = (Data<String, Number>) ((Series) this.getData().get(0)).getData().get(position);
+			System.out.println("Colorizing bar " + position + " (value: " + chartBar.getYValue() + ") to defaultColor " + bar.getColor());
+			chartBar.getNode().setStyle("-fx-bar-fill: " + bar.getColor() + ";");
+			position++;
+		}
 		System.out.println("Bars: ");
-		GeneradorDatos.imprimirDatos(bars);
+//		System.out.println(barsToString());
 	}
 
 	/**
@@ -157,15 +199,71 @@ public class SortingChart extends BarChart
 
 	/**
 	 * Sets the spacing between each bar.
+	 *
 	 * @param categoryGap
 	 * @param barGap
 	 */
-	public void setGaps(double categoryGap, double barGap )
+	public void setGaps(double categoryGap, double barGap)
 	{
 		this.setCategoryGap(categoryGap);
 		this.setBarGap(barGap);
 	}
 
+	public String barsToString()
+	{
+		String barsString = "[";
 
+		for (Bar bar : bars)
+		{
+			barsString += bar.toString() + ", ";
+		}
+		barsString = barsString.substring(0, barsString.length()-1) + "]";
 
+		return barsString;
+	}
+
+	public Bar[] getBars()
+	{
+		return bars;
+	}
+
+	public void setBars(Bar[] bars)
+	{
+		this.bars = bars;
+	}
+
+	public Sorter getSorter()
+	{
+		return sorter;
+	}
+
+	public void setSorter(Sorter sorter)
+	{
+		this.sorter = sorter;
+	}
+
+	public Timeline getTimeline()
+	{
+		return timeline;
+	}
+
+	public void setTimeline(Timeline timeline)
+	{
+		this.timeline = timeline;
+	}
+
+	public String getMovingColor()
+	{
+		return movingColor;
+	}
+
+	public void setMovingColor(String movingColor)
+	{
+		this.movingColor = movingColor;
+	}
+
+	public String getDefaultColor()
+	{
+		return defaultColor;
+	}
 }
