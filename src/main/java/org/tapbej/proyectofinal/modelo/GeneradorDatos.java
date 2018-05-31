@@ -6,7 +6,7 @@ import java.util.Random;
  * Clase con métodos estáticos útil para generar arreglos
  * de enteros con un orden especificado.
  *
- * @author Alejandro Alberto Ramírez Vilchis
+ * @author Alejandro Alberto Ramírez Vilchis & Fernando Josue Pinedo Orta
  */
 public class GeneradorDatos
 {
