@@ -249,13 +249,13 @@ public class NReinasController
       reinasRojas = new ImageView[nReinas ][nReinas];
 
       tablero = new GridPane();
-      tablero.setPrefHeight(700.0);
-      tablero.setPrefWidth(700.0);
-      tablero.setMaxHeight(700.0);
-      tablero.setMaxWidth(700.0);
+      tablero.setPrefHeight(500);
+      tablero.setPrefWidth(500);
+      tablero.setMaxHeight(500);
+      tablero.setMaxWidth(500);
 
       String css = mainApp.getClass().getResource("stylesheets/style.css").toExternalForm();
-      double ladoCuadro = 700/nReinas - 5;
+      double ladoCuadro = 500/nReinas - 5;
 
       for (int i = 0; i < nReinas; i++)
       {
