@@ -53,17 +53,17 @@ public class SortingChart extends BarChart
 	public void sort(int interval)
 	{
 		sorter.sort();
-		Deque<int[]> pasos = sorter.getPasos();
+		Deque<Movement> movements = sorter.getMovements();
 
 		timeline = new Timeline(new KeyFrame(Duration.millis(interval), action ->
 		{
 			try
 			{
-				if (pasos.size() != 0)
+				if (movements.size() != 0)
 				{
-					int[] paso = pasos.pollFirst();
-					System.out.println("intercambiando " + paso[0] + ", " + paso[1]);
-					swapBars(paso[0], paso[1]);
+					Movement movement = movements.pollFirst();
+					System.out.println("intercambiando " + movement.from + ", " + movement.to);
+					swapBars(movement.from, movement.to);
 				}
 				else
 				{
