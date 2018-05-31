@@ -25,7 +25,9 @@ public class SortingChart extends BarChart
 	public SortingChart(int[] bars, SortMethod method)
 	{
 		super(new CategoryAxis(), new NumberAxis());
-		this.bars = bars;
+		this.bars = new int[bars.length];
+		System.arraycopy(bars, 0, this.bars, 0, bars.length);
+
 		this.sorter = new Sorter(method, bars);
 		graphArray();
 		setDefaults();
