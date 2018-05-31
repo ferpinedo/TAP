@@ -22,7 +22,7 @@ public class BarChartController
 	private GridPane gridPane;
 
 	private Timeline timeline;
-	Queue<int[]> pasos;
+	Deque<int[]> pasos;
 
 	public void seleccionDirecta(int[] numeros)
 	{
@@ -54,55 +54,12 @@ public class BarChartController
 	public void initialize()
 	{
 
-		SortingChart sortingChart = new SortingChart(GeneradorDatos.peorCaso(300), SortMethod.SELECTION_SORT);
-		gridPane.add(sortingChart, 1, 2);
-		sortingChart.sort(10);
-
-
-
-//		pasos = new ArrayDeque<>();
-//
-//		int[] datos = GeneradorDatos.casoPromedio(20);
-//		GeneradorDatos.imprimirDatos(datos);
-////		OptimizedSortingChart sortingChart = new OptimizedSortingChart( new CategoryAxis(), new NumberAxis(), new ArrayList<>(Arrays.asList(datos)) );
-//		OptimizedSortingChart sortingChart = new OptimizedSortingChart( new CategoryAxis(), new NumberAxis(), datos );
+//		SortingChart sortingChart = new SortingChart(GeneradorDatos.peorCaso(30), SortMethod.SELECTION_SORT);
 //		gridPane.add(sortingChart, 1, 2);
-//
-//		seleccionDirecta(datos);
-//		System.out.println("------------- Datos ordenados: ");
-//		GeneradorDatos.imprimirDatos(datos);
-
-
-
-//		timeline = new Timeline(new KeyFrame(Duration.millis(500), action ->
-//		{
-//			try
-//			{
-//				if (pasos.size() != 0)
-//				{
-//					int[] paso = pasos.poll();
-//					System.out.println("intercambiando " + paso[0] + ", " + paso[1]);
-//					sortingChart.swapBars(paso[0], paso[1]);
-////					sortingChart.colorizeBar(5, "blue");
-//				}
-//				else
-//				{
-//					timeline.stop();
-//				}
-//			}
-//			catch (Exception e)
-//			{
-//				e.printStackTrace();
-//			}
-//		}));
-//		timeline.setCycleCount(Animation.INDEFINITE);
-//		timeline.play();
-
-
-//		sortingChart.colorizeBar(4, "blue");
-//		sortingChart.colorizeBar(5, "blue");
-//		sortingChart.colorizeBar(6, "blue");
-//		sortingChart.setTimePassed(5.4);
+//		sortingChart.sort(200);
+		SortingChart sortingChart2 = new SortingChart(GeneradorDatos.casoPromedio(100), SortMethod.SELECTION_SORT);
+		gridPane.add(sortingChart2, 2, 2);
+		sortingChart2.sort(100);
 
 	}
 

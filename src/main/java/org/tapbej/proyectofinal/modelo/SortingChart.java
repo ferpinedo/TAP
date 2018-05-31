@@ -10,6 +10,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.util.Duration;
 import org.tapbej.proyectofinal.util.Sorter;
 
+import java.util.Deque;
 import java.util.Queue;
 
 public class SortingChart extends BarChart
@@ -19,7 +20,7 @@ public class SortingChart extends BarChart
 	private Timeline timeline;
 
 	// TODO: sort ascendant
-	
+
 	// TODO: java doc
 	public SortingChart(int[] bars, SortMethod method)
 	{
@@ -33,10 +34,10 @@ public class SortingChart extends BarChart
 	// TODO: java doc & tracking
 	public void sort(int interval)
 	{
-		double timePassed = sorter.sort() / 1000;
+		double timePassed = sorter.sort() ;
 		setTimePassed(timePassed);
 
-		Queue<int[]> pasos = sorter.getPasos();
+		Deque<int[]> pasos = sorter.getPasos();
 
 		timeline = new Timeline(new KeyFrame(Duration.millis(interval), action ->
 		{
@@ -44,7 +45,7 @@ public class SortingChart extends BarChart
 			{
 				if (pasos.size() != 0)
 				{
-					int[] paso = pasos.poll();
+					int[] paso = pasos.pollFirst();
 					System.out.println("intercambiando " + paso[0] + ", " + paso[1]);
 					swapBars(paso[0], paso[1]);
 //					sortingChart.colorizeBar(5, "blue");
@@ -104,7 +105,7 @@ public class SortingChart extends BarChart
 	 */
 	public void setTimePassed(double timePassed)
 	{
-		this.setTitle(timePassed + "s");
+		this.setTitle(timePassed + "ns");
 	}
 
 	/**
@@ -131,7 +132,8 @@ public class SortingChart extends BarChart
 			position++;
 		}
 		this.getData().add(dataSeries);
-		System.out.println("Bars: " + bars.toString());
+		System.out.println("Bars: ");
+		GeneradorDatos.imprimirDatos(bars);
 	}
 
 	/**

@@ -3,6 +3,7 @@ package org.tapbej.proyectofinal.util;
 import org.tapbej.proyectofinal.modelo.SortMethod;
 
 import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -14,7 +15,7 @@ import java.util.Queue;
  */
 public class Sorter
 {
-	private Queue<int[]> pasos;
+	private Deque<int[]> pasos;
 	private SortMethod method;
 	private int[] data;
 
@@ -22,13 +23,14 @@ public class Sorter
 	{
 		this.method = method;
 		this.pasos = new ArrayDeque<>();
-		this.data = data;
+		this.data = new int[data.length];
+		System.arraycopy(data, 0, this.data, 0, data.length);
 	}
 
 
 	public long sort()
 	{
-		long initialTime = System.currentTimeMillis();
+		long initialTime = System.nanoTime();
 
 		switch (method)
 		{
@@ -39,7 +41,9 @@ public class Sorter
 				intercambioDirecto(data);
 				break;
 		}
-		return System.currentTimeMillis() - initialTime;
+		long endTime = System.nanoTime();
+		System.out.println("Initial nano secs: " + initialTime + " | End nano secs: " + endTime);
+		return endTime - initialTime;
 	}
 
 
@@ -98,16 +102,17 @@ public class Sorter
 	public void intercambioDirecto(int[] numeros)
 	{
 		// Ordena de la última posición a la primera
-		for (int i = numeros.length - 1; i > 0; i--)
+		for(int i=0; i < numeros.length; i++)
 		{
 			// Verifica que estén ordenados los valores adyacentes de la parte no ordenada
-			for (int j = 0; j < i; j++)
+			for (int j = 1; j < (numeros.length - i); j++)
 			{
-				// Intercambia los valores no ordenados
-				if (numeros[j] > numeros[j + 1])
+				if (numeros[j - 1] > numeros[j])
 				{
-					intercambiarDatos(numeros, i, j);
+					// Intercambia los valores no ordenados
+					intercambiarDatos(numeros, j, j - 1);
 				}
+
 			}
 		}
 	}
@@ -322,12 +327,12 @@ public class Sorter
 	}
 
 
-	public Queue<int[]> getPasos()
+	public Deque<int[]> getPasos()
 	{
 		return pasos;
 	}
 
-	public void setPasos(Queue<int[]> pasos)
+	public void setPasos(Deque<int[]> pasos)
 	{
 		this.pasos = pasos;
 	}
