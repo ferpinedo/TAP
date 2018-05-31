@@ -1,5 +1,8 @@
 package org.tapbej.proyectofinal.modelo;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
 import javafx.scene.chart.Axis;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
@@ -24,7 +27,7 @@ public class SortingChart extends BarChart
 	 * Adds an item or bar to the chart
 	 * @param value
 	 */
-	public void addItem(int value)
+	public void addBar(int value)
 	{
 		items.add(value);
 //		System.out.println(items.toString());
@@ -36,13 +39,45 @@ public class SortingChart extends BarChart
 	 * @param firstPosition
 	 * @param secondPosition
 	 */
-	public void swapItems(int firstPosition, int secondPosition)
+	public void swapBars(int firstPosition, int secondPosition)
 	{
 		Integer temp = items.get(firstPosition);
 		items.set(firstPosition, items.get(secondPosition));
 		items.set(secondPosition, temp);
 		graphArray();
 	}
+
+	/**
+	 * Colorizes bar
+	 * @param position
+	 * @param color
+	 */
+	public void colorizeBar(int position, String color)
+	{
+		final XYChart.Data<String, Number> bar = (XYChart.Data<String, Number>) ((XYChart.Series)  this.getData().get(0)).getData().get(position);
+		System.out.println("Colorizing bar " + position + " (value: " + bar.getYValue() + ") to color " + color);
+
+		bar.getNode().setStyle("-fx-bar-fill: " + color + ";");
+
+	}
+
+	/**
+	 * Sets and displays time passed
+	 * @param timePassed
+	 */
+	public void setTimePassed(double timePassed)
+	{
+		this.setTitle(timePassed + "s");
+	}
+
+	/**
+	 * Hides time passed
+	 */
+	public void hideTime()
+	{
+		this.setTitle("");
+	}
+
 
 	/**
 	 * Converts the values of the items array list to a chart
