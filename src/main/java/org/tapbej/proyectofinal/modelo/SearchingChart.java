@@ -17,7 +17,6 @@ public class SearchingChart extends BarChart
 	private Searcher searcher;
 	private Timeline animation;
 
-
 	// TODO: java doc
 	public SearchingChart(SearchMethod method, int[] bars, int target)
 	{
@@ -28,25 +27,31 @@ public class SearchingChart extends BarChart
 		setDefaults();
 	}
 
+
 	// TODO: java doc & tracking
 	public void search(int interval)
 	{
 		double timePassed = searcher.search() / 1000;
 		setTimePassed(timePassed);
 
-		Queue<Comparison> pasos = searcher.getComparisons();
+		Queue<Comparison> comparisons = searcher.getComparisons();
 
-		animation = new Timeline(new KeyFrame(Duration.millis(interval), action ->
-		{
+		animation = new Timeline(new KeyFrame(Duration.millis(interval), action -> {
 			try
 			{
-				if (pasos.size() != 0)
+				if (comparisons.size() != 0)
 				{
 					//todo
-//					int[] paso = pasos.poll();
-//					System.out.println("intercambiando " + paso[0] + ", " + paso[1]);
-//					swapBars(paso[0], paso[1]);
-//					sortingChart.colorizeBar(5, "blue");
+					Comparison comparison = comparisons.poll();
+					System.out.println("colorizing " + comparison.getBarIndex());
+					if (comparison.isSuccessful())
+					{
+						colorizeBar(comparison.getBarIndex(), "green");
+					}
+					else
+					{
+						colorizeBar(comparison.getBarIndex(), "red");
+					}
 				}
 				else
 				{
@@ -62,43 +67,46 @@ public class SearchingChart extends BarChart
 		animation.play();
 	}
 
-	public void setDefaults()
+
+	private void setDefaults()
 	{
 		this.setAnimated(false);
 		this.setLegendVisible(false);
 		hideAxis();
-		setGaps(1,1);
+		setGaps(1, 1);
 	}
 
 	/**
 	 * Swap two bars position.
+	 *
 	 * @param firstPosition
 	 * @param secondPosition
 	 */
 	public void swapBars(int firstPosition, int secondPosition)
 	{
 		Integer temp = bars[firstPosition];
-		bars[firstPosition] =  bars[secondPosition];
+		bars[firstPosition] = bars[secondPosition];
 		bars[secondPosition] = temp;
 		graphArray();
 	}
 
 	/**
 	 * Colorizes bar
+	 *
 	 * @param position
 	 * @param color
 	 */
-	public void colorizeBar(int position, String color)
+	private void colorizeBar(int position, String color)
 	{
-		final Data<String, Number> bar = (Data<String, Number>) ((Series)  this.getData().get(0)).getData().get(position);
+		Data<String, Number> bar = (Data<String, Number>) ((Series) this.getData().get(0)).getData().get(position);
 		System.out.println("Colorizing bar " + position + " (value: " + bar.getYValue() + ") to color " + color);
 
 		bar.getNode().setStyle("-fx-bar-fill: " + color + ";");
-
 	}
 
 	/**
 	 * Sets and displays time passed
+	 *
 	 * @param timePassed
 	 */
 	public void setTimePassed(double timePassed)
@@ -123,10 +131,10 @@ public class SearchingChart extends BarChart
 		this.getData().clear();
 		int position = 0;
 		Series<String, Number> dataSeries = new Series<>();
-		for (int item: bars)
+		for (int item : bars)
 		{
 			dataSeries.getData().add(new Data<>(position + "", item));
-//			System.out.println("Bar added: <" + position + ", " + item + ">" );
+			//			System.out.println("Bar added: <" + position + ", " + item + ">" );
 			position++;
 		}
 		this.getData().add(dataSeries);
@@ -150,10 +158,11 @@ public class SearchingChart extends BarChart
 
 	/**
 	 * Sets the spacing between each bar.
+	 *
 	 * @param categoryGap
 	 * @param barGap
 	 */
-	public void setGaps(double categoryGap, double barGap )
+	public void setGaps(double categoryGap, double barGap)
 	{
 		this.setCategoryGap(categoryGap);
 		this.setBarGap(barGap);
