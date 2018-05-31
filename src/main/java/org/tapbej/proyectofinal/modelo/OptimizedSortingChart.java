@@ -8,12 +8,12 @@ import org.tapbej.proyectofinal.util.Sorter;
 
 import java.util.ArrayList;
 
-public class SortingChart extends BarChart
+public class OptimizedSortingChart extends BarChart
 {
 	private ArrayList<Integer> bars;
 	private Sorter sorter;
 
-	public SortingChart(Axis x, Axis y)
+	public OptimizedSortingChart(Axis x, Axis y)
 	{
 		super(x, y);
 		bars = new ArrayList<>();
@@ -22,7 +22,7 @@ public class SortingChart extends BarChart
 		setGaps(1,1);
 	}
 
-	public SortingChart(Axis x, Axis y, ArrayList bars)
+	public OptimizedSortingChart(Axis x, Axis y, ArrayList bars)
 	{
 		super(x, y);
 		System.out.println("Bars: " + bars.toString());
@@ -33,7 +33,7 @@ public class SortingChart extends BarChart
 		setGaps(1,1);
 	}
 
-	public SortingChart(Axis x, Axis y, int[] bars)
+	public OptimizedSortingChart(Axis x, Axis y, int[] bars)
 	{
 		super(x, y);
 		this.bars = new ArrayList<>();
