@@ -28,6 +28,12 @@ public class SearchViewController extends Controller
 		choiceBoxMethod.setItems(searchMethods);
 	}
 
+	public void handleBack()
+	{
+		mainApp.getSecondaryStage().close();
+		mainApp.getPrimaryStage().requestFocus();
+	}
+
 	@Override
 	void setKeyListener()
 	{

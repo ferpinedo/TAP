@@ -92,7 +92,7 @@ public class NReinasController
    public void handleBtnJugar()
    {
       Popups.showInfo("¡Modo juego activado!", "Coloca las reinas arrastrándolas a tales lugares en los que" +
-              " no se puedan amenazar entre ellas mismas. Hazlo antes de que se termine el tiempo", mainApp.getMainWindow());
+              " no se puedan amenazar entre ellas mismas. Hazlo antes de que se termine el tiempo", mainApp.getPrimaryStage());
       generarRecursos();
       queenPane.getStyleClass().add("inner-pane");
       lblQueensLeft.setVisible(true);
@@ -119,7 +119,7 @@ public class NReinasController
       pt.setOnFinished(event ->
               {
                  timerLabel.setVisible(false);
-                 Popups.showFailure("Has fallado", mainApp.getMainWindow());
+                 Popups.showFailure("Has fallado", mainApp.getPrimaryStage());
                  generarRecursos();
               });
       transitions.add(pt);
@@ -576,7 +576,7 @@ public class NReinasController
 
    private void showSuccess()
    {
-      Popups.showSuccess("¡Felicidades, lo has logrado!", mainApp.getMainWindow());
+      Popups.showSuccess("¡Felicidades, lo has logrado!", mainApp.getPrimaryStage());
       timeLine.stop();
       timeLine.getChildren().removeAll();
       timerLabel.setVisible(false);

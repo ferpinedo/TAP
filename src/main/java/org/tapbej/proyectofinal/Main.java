@@ -160,8 +160,25 @@ public class Main extends Application
 		}
 	}
 
-	public Stage getMainWindow()
+
+
+	public Stage getPrimaryStage()
 	{
 		return primaryStage;
+	}
+
+	public void setPrimaryStage(Stage primaryStage)
+	{
+		this.primaryStage = primaryStage;
+	}
+
+	public Stage getSecondaryStage()
+	{
+		return secondaryStage;
+	}
+
+	public void setSecondaryStage(Stage secondaryStage)
+	{
+		this.secondaryStage = secondaryStage;
 	}
 }
