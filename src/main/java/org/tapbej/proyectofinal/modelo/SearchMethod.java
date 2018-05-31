@@ -1,6 +1,6 @@
 package org.tapbej.proyectofinal.modelo;
 
-public enum SearchMethods
+public enum SearchMethod
 {
 	BINARY_SEARCH
 }
