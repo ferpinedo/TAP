@@ -1,8 +1,5 @@
 package org.tapbej.proyectofinal.modelo;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -101,9 +98,9 @@ public class GeneradorDatos
     */
    public static void imprimirDatos(int [] datos)
    {
-      for (int i = 0; i < datos.length; i++)
+      for (int dato : datos)
       {
-         System.out.print(datos[i] + "|");
+         System.out.print(dato + "|");
       }
       System.out.println();
    }
