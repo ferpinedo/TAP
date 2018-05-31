@@ -1,62 +1,74 @@
 package org.tapbej.proyectofinal.modelo;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.Node;
-import javafx.scene.chart.Axis;
+
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.util.Duration;
+import org.tapbej.proyectofinal.util.Sorter;
 
-import java.util.ArrayList;
-
+import java.util.Queue;
 
 public class SortingChart extends BarChart
 {
-	private ArrayList<Integer> items;
+	private int[] bars;
+	private Sorter sorter;
+	private Timeline timeline;
 
-	public SortingChart(Axis x, Axis y)
+	// TODO: sort ascendant
+	
+	// TODO: java doc
+	public SortingChart(int[] bars, SortMethod method)
 	{
-		super(x, y);
-		items = new ArrayList<>();
-		this.setAnimated(false);
-		hideAxis();
-		setGaps(1,1);
-	}
-
-	public SortingChart(Axis x, Axis y, ArrayList bars)
-	{
-		super(x, y);
-		System.out.println("Bars: " + bars.toString());
-		this.items = bars;
+		super(new CategoryAxis(), new NumberAxis());
+		this.bars = bars;
+		this.sorter = new Sorter(method, bars);
 		graphArray();
-		this.setAnimated(false);
-		hideAxis();
-		setGaps(1,1);
+		setDefaults();
 	}
 
-	public SortingChart(Axis x, Axis y, int[] bars)
+	// TODO: java doc & tracking
+	public void sort(int interval)
 	{
-		super(x, y);
-		items = new ArrayList<>();
-		for (int i = 0; i < bars.length; i++)
+		double timePassed = sorter.sort() / 1000;
+		setTimePassed(timePassed);
+
+		Queue<int[]> pasos = sorter.getPasos();
+
+		timeline = new Timeline(new KeyFrame(Duration.millis(interval), action ->
 		{
-			addBar(bars[i]);
-		}
-		graphArray();
-		this.setAnimated(false);
-		hideAxis();
-		setGaps(1,1);
+			try
+			{
+				if (pasos.size() != 0)
+				{
+					int[] paso = pasos.poll();
+					System.out.println("intercambiando " + paso[0] + ", " + paso[1]);
+					swapBars(paso[0], paso[1]);
+//					sortingChart.colorizeBar(5, "blue");
+				}
+				else
+				{
+					timeline.stop();
+				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}));
+		timeline.setCycleCount(Animation.INDEFINITE);
+		timeline.play();
 	}
 
-	/**
-	 * Adds an item or bar to the chart
-	 * @param value
-	 */
-	public void addBar(int value)
+	public void setDefaults()
 	{
-		items.add(value);
-//		System.out.println(items.toString());
-		graphArray();
+		this.setAnimated(false);
+		this.setLegendVisible(false);
+		hideAxis();
+		setGaps(1,1);
 	}
 
 	/**
@@ -66,9 +78,9 @@ public class SortingChart extends BarChart
 	 */
 	public void swapBars(int firstPosition, int secondPosition)
 	{
-		Integer temp = items.get(firstPosition);
-		items.set(firstPosition, items.get(secondPosition));
-		items.set(secondPosition, temp);
+		Integer temp = bars[firstPosition];
+		bars[firstPosition] =  bars[secondPosition];
+		bars[secondPosition] = temp;
 		graphArray();
 	}
 
@@ -79,7 +91,7 @@ public class SortingChart extends BarChart
 	 */
 	public void colorizeBar(int position, String color)
 	{
-		final XYChart.Data<String, Number> bar = (XYChart.Data<String, Number>) ((XYChart.Series)  this.getData().get(0)).getData().get(position);
+		final Data<String, Number> bar = (Data<String, Number>) ((Series)  this.getData().get(0)).getData().get(position);
 		System.out.println("Colorizing bar " + position + " (value: " + bar.getYValue() + ") to color " + color);
 
 		bar.getNode().setStyle("-fx-bar-fill: " + color + ";");
@@ -105,21 +117,21 @@ public class SortingChart extends BarChart
 
 
 	/**
-	 * Converts the values of the items array list to a chart
+	 * Converts the values of the bars array list to a chart
 	 */
 	private void graphArray()
 	{
 		this.getData().clear();
 		int position = 0;
-		XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
-		for (int item: items)
+		Series<String, Number> dataSeries = new Series<>();
+		for (int item: bars)
 		{
-			dataSeries.getData().add(new XYChart.Data<>(position + "", item));
+			dataSeries.getData().add(new Data<>(position + "", item));
 //			System.out.println("Bar added: <" + position + ", " + item + ">" );
 			position++;
 		}
 		this.getData().add(dataSeries);
-		System.out.println("Bars: " + items.toString());
+		System.out.println("Bars: " + bars.toString());
 	}
 
 	/**
