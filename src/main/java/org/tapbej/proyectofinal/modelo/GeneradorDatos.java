@@ -1,5 +1,8 @@
 package org.tapbej.proyectofinal.modelo;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -21,14 +24,7 @@ public class GeneradorDatos
     */
    public static int[] mejorCaso(int n)
    {
-      int [] datos = new int[n];
-
-      for (int i = 0; i < n; i++)
-      {
-         datos[i] = i + 1;
-      }
-
-      return datos;
+      return llenarArreglo(n);
    }
 
 
@@ -62,14 +58,8 @@ public class GeneradorDatos
     */
    public static int[] casoPromedio(int n)
    {
-      Random randomizer = new Random();
-      int [] datos = new int[n];
-
-      for (int i = 0; i < n; i++)
-      {
-         datos[i] = randomizer.nextInt(n) + 1;
-      }
-
+      int[] datos = llenarArreglo(n);
+      randomizarArreglo(datos);
       return datos;
    }
 
@@ -84,22 +74,22 @@ public class GeneradorDatos
     */
    public static int[] casoMixto(int n, int porcentajeOrdenados)
    {
-      Random randomizer = new Random();
-      int [] datos = new int[n];
+      int[] datos = new int[n];
 
       int delimitador = (int)( n * ((double)porcentajeOrdenados / 100.0));
-
       System.out.println(delimitador);
+
+      int[] parteOrdenada = llenarArreglo(delimitador);
+      int[] partePromedio = llenarArreglo(delimitador, n);
+      randomizarArreglo(partePromedio);
 
       for (int i = 0; i < delimitador; i++)
       {
-         System.out.println("Metiendo num ordenado en " + i);
-         datos[i] = i + 1;
+         datos[i] = parteOrdenada[i];
       }
-
       for (int i = delimitador; i < n; i++)
       {
-         datos[i] = (randomizer.nextInt(n - delimitador) + delimitador) + 1;
+         datos[i] = partePromedio[i - delimitador];
       }
 
       return datos;
@@ -116,5 +106,68 @@ public class GeneradorDatos
          System.out.print(datos[i] + "|");
       }
       System.out.println();
+   }
+
+
+   /**
+    * Llena un arreglo de enteros de uno al
+    * número especificado
+    * @param n El tamaño del arreglo deseado
+    */
+   private static int[] llenarArreglo(int n)
+   {
+      int [] datos = new int[n];
+      for (int i = 0; i < datos.length; i++)
+      {
+         datos[i] = i+1;
+      }
+      return datos;
+   }
+
+
+   /**
+    * Llena un arreglo de enteros con limites
+    * inferior y superior
+    * @param inferior El limite inferior del arreglo
+    * @param superior El limite superior del arreglo
+    */
+   private static int[] llenarArreglo(int inferior, int superior)
+   {
+      int [] datos = new int[superior - inferior];
+      for (int i = 0; i < datos.length; i++)
+      {
+         datos[i] = inferior + (i+1);
+      }
+      return datos;
+   }
+
+
+   /**
+    * Intercambia los valores de dos posiciones en un arreglo
+    * @param arrelgo La referencia al arreglo
+    * @param indice1 Indice del numero 1
+    * @param indice2 Indice del numero 2
+    */
+   private static void intercambiar(int[] arrelgo, int indice1, int indice2)
+   {
+      int temporal = arrelgo[indice1];
+      arrelgo[indice1] = arrelgo[indice2];
+      arrelgo[indice2] = temporal;
+   }
+
+   /**
+    * "Randomiza" un arreglo de enteros al
+    * intercambiar cada una de sus posiciones
+    * @param arreglo
+    */
+   private static void randomizarArreglo(int[] arreglo)
+   {
+      Random randomizer = new Random();
+
+      for (int i = 0; i < arreglo.length; i++)
+      {
+         // intercambiar posicion i con una posicion random
+         intercambiar(arreglo, i, randomizer.nextInt(arreglo.length));
+      }
    }
 }
