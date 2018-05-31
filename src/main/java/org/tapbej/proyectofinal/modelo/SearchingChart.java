@@ -8,24 +8,22 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.util.Duration;
-import org.tapbej.proyectofinal.util.Sorter;
 
 import java.util.Queue;
 
 public class SearchingChart extends BarChart
 {
 	private int[] bars;
-	private Sorter sorter;
-	private Timeline timeline;
+	private Searcher searcher;
+	private Timeline animation;
 
-	// TODO: search ascendant
 
 	// TODO: java doc
-	public SearchingChart(int[] bars, SortMethod method)
+	public SearchingChart(SearchMethod method, int[] bars, int target)
 	{
 		super(new CategoryAxis(), new NumberAxis());
 		this.bars = bars;
-		this.sorter = new Sorter(method, bars);
+		this.searcher = new Searcher(method, bars, target);
 		graphArray();
 		setDefaults();
 	}
@@ -33,25 +31,26 @@ public class SearchingChart extends BarChart
 	// TODO: java doc & tracking
 	public void search(int interval)
 	{
-		double timePassed = sorter.sort() / 1000;
+		double timePassed = searcher.search() / 1000;
 		setTimePassed(timePassed);
 
-		Queue<int[]> pasos = sorter.getPasos();
+		Queue<Comparison> pasos = searcher.getComparisons();
 
-		timeline = new Timeline(new KeyFrame(Duration.millis(interval), action ->
+		animation = new Timeline(new KeyFrame(Duration.millis(interval), action ->
 		{
 			try
 			{
 				if (pasos.size() != 0)
 				{
-					int[] paso = pasos.poll();
-					System.out.println("intercambiando " + paso[0] + ", " + paso[1]);
-					swapBars(paso[0], paso[1]);
+					//todo
+//					int[] paso = pasos.poll();
+//					System.out.println("intercambiando " + paso[0] + ", " + paso[1]);
+//					swapBars(paso[0], paso[1]);
 //					sortingChart.colorizeBar(5, "blue");
 				}
 				else
 				{
-					timeline.stop();
+					animation.stop();
 				}
 			}
 			catch (Exception e)
@@ -59,8 +58,8 @@ public class SearchingChart extends BarChart
 				e.printStackTrace();
 			}
 		}));
-		timeline.setCycleCount(Animation.INDEFINITE);
-		timeline.play();
+		animation.setCycleCount(Animation.INDEFINITE);
+		animation.play();
 	}
 
 	public void setDefaults()
