@@ -2,13 +2,13 @@ package org.tapbej.proyectofinal.modelo;
 
 import javafx.scene.layout.VBox;
 
-public class Paso
+public class PasoHanoi
 {
 	private int aro;
 	private VBox torre;
 	
 	
-	public Paso(int aro, VBox torre)
+	public PasoHanoi(int aro, VBox torre)
 	{
 		this.aro = aro;
 		this.torre = torre;
@@ -34,7 +34,7 @@ public class Paso
 	@Override
 	public String toString()
 	{
-		return "Paso [aro=" + aro + ", torre=" + torre + "]";
+		return "PasoHanoi [aro=" + aro + ", torre=" + torre + "]";
 	}
 	
 	
