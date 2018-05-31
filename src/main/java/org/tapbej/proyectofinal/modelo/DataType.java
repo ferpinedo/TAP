@@ -1,6 +1,6 @@
 package org.tapbej.proyectofinal.modelo;
 
-public enum DataTypes
+public enum DataType
 {
 	ORDERED_LIST,
 	UNORDERED_LIST,

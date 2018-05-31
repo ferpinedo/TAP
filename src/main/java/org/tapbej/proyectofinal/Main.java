@@ -28,6 +28,7 @@ public class Main extends Application
 		this.primaryStage = primaryStage;
       this.primaryStage.setTitle("Tópicos Avanzados de Programación");
 		this.primaryStage.getIcons().add(new Image(getClass().getResource("iconos/algorithm.png").toExternalForm()));
+		this.secondaryStage.getIcons().add(new Image(getClass().getResource("iconos/algorithm.png").toExternalForm()));
 
       secondaryStage = new Stage();
       
