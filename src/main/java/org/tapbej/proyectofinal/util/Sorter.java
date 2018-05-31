@@ -76,7 +76,7 @@ public class Sorter
 	 * Ordena de manera ascendente un arreglo de números enteros.
 	 * Encuentra el valor menor de la parte posiblemente no ordenada y lo intercambia con la primera posición de dicha
 	 * parte.
-	 * También llamado "Selection sort"
+	 * También llamado "Selection search"
 	 *
 	 * @param data arreglo de enteros a ordenar
 	 */
@@ -104,7 +104,7 @@ public class Sorter
 	/**
 	 * Ordena de manera ascendente un arreglo de números enteros.
 	 * Compara valores adyaccentes y los intercambia si no están ordenados correctamente
-	 * También llamado "Bubble sort"
+	 * También llamado "Bubble search"
 	 *
 	 * @param data arreglo de enteros a ordenar
 	 */
@@ -129,7 +129,7 @@ public class Sorter
 	/**
 	 * Ordena de manera ascendente un arreglo de números enteros.
 	 * Se inserta elemento por elmento en su posición correcta.
-	 * También llamado "Insertion sort" o "Baraja"
+	 * También llamado "Insertion search" o "Baraja"
 	 *
 	 * @param data arreglo de enteros a ordenar
 	 */

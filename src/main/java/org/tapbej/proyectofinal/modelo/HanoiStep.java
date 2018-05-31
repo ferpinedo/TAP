@@ -2,13 +2,13 @@ package org.tapbej.proyectofinal.modelo;
 
 import javafx.scene.layout.VBox;
 
-public class PasoHanoi
+public class HanoiStep
 {
 	private int aro;
 	private VBox torre;
 	
 	
-	public PasoHanoi(int aro, VBox torre)
+	public HanoiStep(int aro, VBox torre)
 	{
 		this.aro = aro;
 		this.torre = torre;

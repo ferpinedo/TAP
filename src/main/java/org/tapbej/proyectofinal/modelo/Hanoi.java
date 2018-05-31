@@ -19,7 +19,7 @@ public class Hanoi
 {
 	private ArrayList<Rectangle> aros;
 
-	private Queue<PasoHanoi> pasos;
+	private Queue<HanoiStep> pasos;
 
 	private Timeline timeline;
 
@@ -33,7 +33,7 @@ public class Hanoi
 			if (pasos.size() != 0)
 			{
 
-				PasoHanoi pasoActual = pasos.poll();
+				HanoiStep pasoActual = pasos.poll();
 				mover(aros.get(pasoActual.getAro()), pasoActual.getTorre());
 				System.out.println(pasoActual.toString());
 				onPause = false;
@@ -118,7 +118,7 @@ public class Hanoi
 
 	private void guardar(int aro, VBox torre)
 	{
-		pasos.add(new PasoHanoi(aro, torre));
+		pasos.add(new HanoiStep(aro, torre));
 	}
 
 

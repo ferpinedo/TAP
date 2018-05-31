@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class NReinasController
+public class NReinasController extends Controller
 {
    private Main mainApp;
    private GridPane tablero;
@@ -635,4 +635,21 @@ public class NReinasController
       this.mainApp = mainApp;
    }
 
+   @Override
+   void setKeyListener()
+   {
+
+   }
+
+   @Override
+   void setDefaultCloseOperation()
+   {
+
+   }
+
+   @Override
+   void runSpecificOperations()
+   {
+
+   }
 }
