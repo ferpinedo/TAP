@@ -4,7 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.AnchorPane;
 import org.tapbej.proyectofinal.modelo.GeneradorDatos;
+import org.tapbej.proyectofinal.modelo.SortMethod;
 import org.tapbej.proyectofinal.modelo.SortingChart;
 
 public class SearchViewController extends Controller
@@ -38,7 +40,11 @@ public class SearchViewController extends Controller
 		choiceBoxMethod.setValue(searchMethods.get(0));
 		choiceBoxMethod.setItems(searchMethods);
 
-//		SortingChart sortingChart = new SortingChart(GeneradorDatos.mejorCaso(100), SO)
+		SortingChart sortingChart = new SortingChart(GeneradorDatos.mejorCaso(100), SortMethod.BUBBLE_SORT);
+		AnchorPane.setTopAnchor(sortingChart, 170.0);
+		AnchorPane.setBottomAnchor(sortingChart, 30.0);
+		AnchorPane.setLeftAnchor(sortingChart, 100.0);
+		AnchorPane.setRightAnchor(sortingChart, 100.0);
 
 
 		choiceBoxDataType.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldValue, newValue) -> {
