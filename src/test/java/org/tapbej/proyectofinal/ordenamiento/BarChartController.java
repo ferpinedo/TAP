@@ -7,10 +7,11 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
+import org.tapbej.proyectofinal.modelo.GeneradorDatos;
 import org.tapbej.proyectofinal.modelo.SortingChart;
 
-import java.util.ArrayList;
-import java.util.Stack;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class BarChartController
 {
@@ -19,54 +20,65 @@ public class BarChartController
 	private GridPane gridPane;
 
 	private Timeline timeline;
+	Queue<Integer[]> pasos;
+
+	public void seleccionDirecta(int[] numeros)
+	{
+		// Uno por uno se verifican los elementos del arreglo si están ordenada
+		for (int i = 0; i < numeros.length - 1; i++)
+		{
+			// Se busca el índice del número más pequeño de la parte no ordenada
+			int indiceMinimo = i; // Se inicializa el valor mínimo
+			for (int j = i + 1; j < numeros.length; j++)
+			{
+				if (numeros[j] < numeros[indiceMinimo])
+					indiceMinimo = j;
+			}
+			// Si se encuentra un número menor al que se encuentra en la posición actual a verificar,
+			// se intercambian los valores
+			if (indiceMinimo != i)
+			{
+				pasos.add(new Integer[]{indiceMinimo, i});
+				int temp = numeros[indiceMinimo];
+				numeros[indiceMinimo] = numeros[i];
+				numeros[i] = temp;
+			}
+		}
+	}
 
 
 
 	@FXML
 	public void initialize()
 	{
-		final NumberAxis yAxis2 = new NumberAxis();
-		final CategoryAxis xAxis2 = new CategoryAxis();
-		SortingChart sortingChart = new SortingChart(xAxis2, yAxis2);
-		sortingChart.addBar(1);
-		sortingChart.addBar(2);
-		sortingChart.addBar(3);
-		sortingChart.addBar(4);
-		sortingChart.addBar(5);
-		sortingChart.addBar(6);
-		sortingChart.addBar(8);
-		sortingChart.addBar(8);
-		sortingChart.addBar(8);
-		sortingChart.addBar(9);
-		sortingChart.addBar(10);
+		pasos = new ArrayDeque<>();
+
+		int[] datos = GeneradorDatos.casoPromedio(20);
+		GeneradorDatos.imprimirDatos(datos);
+//		SortingChart sortingChart = new SortingChart( new CategoryAxis(), new NumberAxis(), new ArrayList<>(Arrays.asList(datos)) );
+		SortingChart sortingChart = new SortingChart( new CategoryAxis(), new NumberAxis(), datos );
 		gridPane.add(sortingChart, 1, 2);
 
-		sortingChart.colorizeBar(4, "blue");
-		sortingChart.colorizeBar(5, "blue");
-		sortingChart.colorizeBar(6, "blue");
-		sortingChart.setTimePassed(5.4);
+		seleccionDirecta(datos);
+		System.out.println("------------- Datos ordenados: ");
+		GeneradorDatos.imprimirDatos(datos);
 
-		Stack<Integer[]> pasos = new Stack<>();
+//		sortingChart.colorizeBar(4, "blue");
+//		sortingChart.colorizeBar(5, "blue");
+//		sortingChart.colorizeBar(6, "blue");
+//		sortingChart.setTimePassed(5.4);
 
-		for (int j = 0; j < 100; j++)
-		{
-			for (int i = 0; i < 11; i++)
-			{
-//				System.out.println("Creating step: " + i + ", " + (10-i));
-				pasos.add(new Integer[]{i, 10 - i});
-			}
-		}
 
-		timeline = new Timeline(new KeyFrame(Duration.millis(1000), action ->
+		timeline = new Timeline(new KeyFrame(Duration.millis(500), action ->
 		{
 			try
 			{
 				if (pasos.size() != 0)
 				{
-					Integer[] paso = pasos.pop();
-					System.out.println(paso[0] + ", " + paso[1]);
+					Integer[] paso = pasos.poll();
+					System.out.println("intercambiando " + paso[0] + ", " + paso[1]);
 					sortingChart.swapBars(paso[0], paso[1]);
-					sortingChart.colorizeBar(5, "blue");
+//					sortingChart.colorizeBar(5, "blue");
 				}
 				else
 				{

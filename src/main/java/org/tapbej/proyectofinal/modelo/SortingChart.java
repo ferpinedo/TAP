@@ -23,6 +23,31 @@ public class SortingChart extends BarChart
 		setGaps(1,1);
 	}
 
+	public SortingChart(Axis x, Axis y, ArrayList bars)
+	{
+		super(x, y);
+		System.out.println("Bars: " + bars.toString());
+		this.items = bars;
+		graphArray();
+		this.setAnimated(false);
+		hideAxis();
+		setGaps(1,1);
+	}
+
+	public SortingChart(Axis x, Axis y, int[] bars)
+	{
+		super(x, y);
+		items = new ArrayList<>();
+		for (int i = 0; i < bars.length; i++)
+		{
+			addBar(bars[i]);
+		}
+		graphArray();
+		this.setAnimated(false);
+		hideAxis();
+		setGaps(1,1);
+	}
+
 	/**
 	 * Adds an item or bar to the chart
 	 * @param value
@@ -94,6 +119,7 @@ public class SortingChart extends BarChart
 			position++;
 		}
 		this.getData().add(dataSeries);
+		System.out.println("Bars: " + items.toString());
 	}
 
 	/**
