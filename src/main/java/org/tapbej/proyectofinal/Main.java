@@ -13,6 +13,7 @@ import org.tapbej.proyectofinal.controlador.Controller;
 public class Main extends Application
 {
 	private Stage primaryStage;
+	private Stage secondaryStage;
 
 	public static void main(String [] args)
 	{
@@ -25,6 +26,8 @@ public class Main extends Application
 	{
 		this.primaryStage = primaryStage;
       this.primaryStage.setTitle("Tópicos Avanzados de Programación");
+
+      secondaryStage = new Stage();
       
       showTopicSelectionView();
 	}
@@ -80,8 +83,8 @@ public class Main extends Application
 			loader.setLocation(Main.class.getResource("vista/SortingView.fxml"));
 			AnchorPane ventana = loader.load();
 
-			primaryStage.setScene(new Scene(ventana));
-			primaryStage.show();
+			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.show();
 			Controller controller = loader.getController();
 			controller.start(this);
 
@@ -100,8 +103,8 @@ public class Main extends Application
 			loader.setLocation(Main.class.getResource("vista/SearchView.fxml"));
 			AnchorPane ventana = loader.load();
 
-			primaryStage.setScene(new Scene(ventana));
-			primaryStage.show();
+			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.show();
 			Controller controller = loader.getController();
 			controller.start(this);
 
@@ -121,10 +124,9 @@ public class Main extends Application
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("vista/TorresHanoiView.fxml"));
 			AnchorPane ventana = loader.load();
-			Stage hanoiStage = new Stage();
-			hanoiStage.setScene(new Scene(ventana));
-			hanoiStage.show();
-			hanoiStage.setTitle("Torres de Hanói");
+			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.show();
+			secondaryStage.setTitle("Torres de Hanói");
 		}
 		catch (IOException e)
 		{
@@ -145,11 +147,11 @@ public class Main extends Application
 			Controller controlador = loader.getController();
 			controlador.start(this);
 
-			Stage nReiansStage = new Stage();
-			nReiansStage.setScene(new Scene(ventana));
-			nReiansStage.show();
-			nReiansStage.centerOnScreen();
-			nReiansStage.setTitle("N-Reinas");
+
+			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.show();
+			secondaryStage.centerOnScreen();
+			secondaryStage.setTitle("N-Reinas");
 
 		}
 		catch (IOException e)
