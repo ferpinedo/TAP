@@ -40,6 +40,12 @@ public class Sorter
 			case BUBBLE_SORT:
 				intercambioDirecto(data);
 				break;
+			case INSERTION_SORT:
+				insercionDirecta(data);
+				break;
+			case SHAKER_SORT:
+				shakerSort(data);
+				break;
 		}
 		long endTime = System.nanoTime();
 		System.out.println("Initial nano secs: " + initialTime + " | End nano secs: " + endTime);
@@ -131,9 +137,7 @@ public class Sorter
 			// busca e intercambia las posiciones que estén en desorden yendo de uno en uno
 			for (int j = i; j > 0 && numeros[j] < numeros[j - 1]; j--)
 			{
-				int temp = numeros[j];
-				numeros[j] = numeros[j - 1];
-				numeros[j - 1] = temp;
+				intercambiarDatos(numeros, j, j-1);
 			}
 		}
 	}
