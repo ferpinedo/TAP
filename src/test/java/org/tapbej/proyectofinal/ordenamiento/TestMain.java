@@ -12,6 +12,7 @@ import java.io.IOException;
 public class TestMain extends Application
 {
 	private Stage primaryStage;
+
 	public void showBarChartsScreen()
 	{
 		FXMLLoader loader = new FXMLLoader();
@@ -19,15 +20,16 @@ public class TestMain extends Application
 		AnchorPane ventana = null;
 		try
 		{
-			ventana =  (AnchorPane) loader.load();
-		} catch (IOException e)
+			ventana = (AnchorPane) loader.load();
+			primaryStage = new Stage();
+			primaryStage.setScene(new Scene(ventana));
+			primaryStage.show();
+			BarChartController controlador = loader.getController();
+		}
+		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
-		primaryStage = new Stage();
-		primaryStage.setScene(new Scene(ventana));
-		primaryStage.show();
-		BarChartController controlador = loader.getController();
 	}
 
 	@Override
@@ -37,7 +39,7 @@ public class TestMain extends Application
 		showBarChartsScreen();
 	}
 
-	public static void main(String [] args)
+	public static void main(String[] args)
 	{
 		launch(args);
 	}

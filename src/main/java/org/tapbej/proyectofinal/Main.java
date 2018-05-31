@@ -7,13 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.tapbej.proyectofinal.controlador.MenuControlador;
-import org.tapbej.proyectofinal.controlador.NReinasController;
+import org.tapbej.proyectofinal.controlador.Controller;
 
 
 public class Main extends Application
 {
 	private Stage primaryStage;
+	private Stage secondaryStage;
 
 	public static void main(String [] args)
 	{
@@ -22,27 +22,29 @@ public class Main extends Application
 
 
 	@Override
-	public void start(Stage primaryStage) throws Exception
+	public void start(Stage primaryStage)
 	{
 		this.primaryStage = primaryStage;
-      this.primaryStage.setTitle("Recursividad");
+      this.primaryStage.setTitle("Tópicos Avanzados de Programación");
+
+      secondaryStage = new Stage();
       
-      mostrarVistaPrincipal();
+      showTopicSelectionView();
 	}
 	
 	
-	private void mostrarVistaPrincipal()
+	public void showTopicSelectionView()
 	{
 		try
       {
          FXMLLoader loader = new FXMLLoader();
-         loader.setLocation(Main.class.getResource("vista/MenuView.fxml"));
-         AnchorPane ventana = (AnchorPane) loader.load();
+         loader.setLocation(Main.class.getResource("vista/TopicSelectionView.fxml"));
+         AnchorPane ventana = loader.load();
 
          primaryStage.setScene(new Scene(ventana));
          primaryStage.show();
-         MenuControlador controlador = loader.getController();
-         controlador.setMain(this);
+         Controller controller = loader.getController();
+         controller.start(this);
 
       }
 		catch (IOException e)
@@ -52,23 +54,87 @@ public class Main extends Application
 	}
 
 
-	public void mostrarHanoi()
+	public void showRecursionView()
 	{
 		try
 		{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("vista/TorresHanoiView.fxml"));
-			AnchorPane ventana = (AnchorPane) loader.load();
-			Stage hanoiStage = new Stage();
-			hanoiStage.setScene(new Scene(ventana));
-			hanoiStage.show();
-			hanoiStage.setTitle("Torres de Hanói");
+			loader.setLocation(Main.class.getResource("vista/RecursionView.fxml"));
+			AnchorPane ventana = loader.load();
+
+			primaryStage.setScene(new Scene(ventana));
+			primaryStage.show();
+			Controller controller = loader.getController();
+			controller.start(this);
+
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 	}
+
+
+	public void showSortingView()
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("vista/SortingView.fxml"));
+			AnchorPane ventana = loader.load();
+
+			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.show();
+			Controller controller = loader.getController();
+			controller.start(this);
+
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public void showSearchView()
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("vista/SearchView.fxml"));
+			AnchorPane ventana = loader.load();
+
+			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.show();
+			Controller controller = loader.getController();
+			controller.start(this);
+
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+
+	public void showHanoi()
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("vista/TorresHanoiView.fxml"));
+			AnchorPane ventana = loader.load();
+			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.show();
+			secondaryStage.setTitle("Torres de Hanói");
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+
 
 	public void mostrarNReinas()
 	{
@@ -76,16 +142,16 @@ public class Main extends Application
 		{
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("vista/NReinasView.fxml"));
-			AnchorPane ventana = (AnchorPane) loader.load();
+			AnchorPane ventana = loader.load();
 
-			NReinasController controlador = loader.getController();
-			controlador.setMainApp(this);
+			Controller controlador = loader.getController();
+			controlador.start(this);
 
-			Stage nReiansStage = new Stage();
-			nReiansStage.setScene(new Scene(ventana));
-			nReiansStage.show();
-			nReiansStage.centerOnScreen();
-			nReiansStage.setTitle("N-Reinas");
+
+			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.show();
+			secondaryStage.centerOnScreen();
+			secondaryStage.setTitle("N-Reinas");
 
 		}
 		catch (IOException e)
@@ -94,8 +160,25 @@ public class Main extends Application
 		}
 	}
 
-	public Stage getMainWindow()
+
+
+	public Stage getPrimaryStage()
 	{
 		return primaryStage;
+	}
+
+	public void setPrimaryStage(Stage primaryStage)
+	{
+		this.primaryStage = primaryStage;
+	}
+
+	public Stage getSecondaryStage()
+	{
+		return secondaryStage;
+	}
+
+	public void setSecondaryStage(Stage secondaryStage)
+	{
+		this.secondaryStage = secondaryStage;
 	}
 }
