@@ -1,6 +1,5 @@
-package org.tapbej.proyectofinal.util;
+package org.tapbej.proyectofinal.modelo;
 
-import org.tapbej.proyectofinal.modelo.SortMethod;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -13,13 +12,13 @@ import java.util.Queue;
  * @author (Pinedo Orta, Fernando Josué ; Ramírez Vilchis, Alejandro Alberto)
  * @version (1.0 - Abril 2018)
  */
-public class Sorter
+public class Searcher
 {
 	private Deque<int[]> pasos;
-	private SortMethod method;
+	private SearchMethod method;
 	private int[] data;
 
-	public Sorter(SortMethod method, int[] data)
+	public Searcher(SearchMethod method, int[] data)
 	{
 		this.method = method;
 		this.pasos = new ArrayDeque<>();
@@ -28,22 +27,19 @@ public class Sorter
 	}
 
 
-	public long sort()
+	public long search()
 	{
 		long initialTime = System.nanoTime();
 
 		switch (method)
 		{
-			case SELECTION_SORT:
+			case SEQUENTIAL_SEARCH:
 				seleccionDirecta(data);
 				break;
-			case BUBBLE_SORT:
+			case BINARY_SEARCH:
 				intercambioDirecto(data);
 				break;
-			case INSERTION_SORT:
-				insercionDirecta(data);
-				break;
-			case SHAKER_SORT:
+			case HASH_TABLE_SEARCH:
 				shakerSort(data);
 				break;
 		}

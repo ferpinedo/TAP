@@ -18,7 +18,7 @@ public class SearchingChart extends BarChart
 	private Sorter sorter;
 	private Timeline timeline;
 
-	// TODO: sort ascendant
+	// TODO: search ascendant
 
 	// TODO: java doc
 	public SearchingChart(int[] bars, SortMethod method)
