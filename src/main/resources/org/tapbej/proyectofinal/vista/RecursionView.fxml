@@ -81,5 +81,10 @@
          </padding>
       </VBox>
       <Button mnemonicParsing="false" onAction="#handleBack" text="Regresar" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <Label alignment="CENTER" layoutX="160.0" layoutY="343.0" prefHeight="43.0" prefWidth="281.0" text="Recursividad" textAlignment="CENTER" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font name="Roboto Medium" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

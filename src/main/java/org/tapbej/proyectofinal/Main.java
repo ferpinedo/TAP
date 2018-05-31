@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.tapbej.proyectofinal.controlador.Controller;
@@ -26,6 +27,7 @@ public class Main extends Application
 	{
 		this.primaryStage = primaryStage;
       this.primaryStage.setTitle("Tópicos Avanzados de Programación");
+		this.primaryStage.getIcons().add(new Image(getClass().getResource("iconos/algorithm.png").toExternalForm()));
 
       secondaryStage = new Stage();
       
