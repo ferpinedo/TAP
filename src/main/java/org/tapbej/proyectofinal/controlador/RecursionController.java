@@ -18,6 +18,12 @@ public class RecursionController extends Controller
 		mainApp.mostrarNReinas();
 	}
 
+
+	public void handleBack()
+	{
+		mainApp.showTopicSelectionView();
+	}
+
 	@Override
 	void setKeyListener()
 	{

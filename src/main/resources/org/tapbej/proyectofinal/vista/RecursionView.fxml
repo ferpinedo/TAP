@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -20,50 +21,65 @@
             </Label>
             <HBox alignment="CENTER" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleHanoi" prefHeight="150.0" prefWidth="150.0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="134.0" prefWidth="139.0" spacing="15.0">
-                           <children>
-                              <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../iconos/hanoi2.png" />
-                                 </image>
-                              </ImageView>
-                              <Label text="Torres de Hanói">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="235.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleNReinas" prefHeight="150.0" prefWidth="150.0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="134.0" prefWidth="139.0" spacing="15.0">
-                           <children>
-                              <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../iconos/crown.png" />
-                                 </image></ImageView>
-                              <Label text="N-Reinas">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </Button>
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleHanoi" prefHeight="150.0" prefWidth="150.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <graphic>
+                              <VBox alignment="CENTER" prefHeight="134.0" prefWidth="139.0" spacing="15.0">
+                                 <children>
+                                    <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../iconos/hanoi2.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="Torres de Hanói">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                        <Label prefHeight="51.0" prefWidth="150.0" text="Rompecabezas que es resuelto con la técnica de &quot;Divide y vencerás&quot;" textAlignment="CENTER" wrapText="true" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleNReinas" prefHeight="150.0" prefWidth="150.0" textAlignment="CENTER">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <graphic>
+                              <VBox alignment="CENTER" prefHeight="134.0" prefWidth="139.0" spacing="15.0">
+                                 <children>
+                                    <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../iconos/crown.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="N-Reinas">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                        <Label prefHeight="51.0" prefWidth="150.0" text="¡No dejes que las reinas se coman! Problema recursivo resuelto con Backtracking" textAlignment="CENTER" wrapText="true" />
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>
+         <padding>
+            <Insets top="70.0" />
+         </padding>
       </VBox>
+      <Button mnemonicParsing="false" onAction="#handleBack" text="Regresar" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
    </children>
 </AnchorPane>
