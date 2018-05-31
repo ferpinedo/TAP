@@ -19,7 +19,6 @@ public class SortingChart extends BarChart
 	private Sorter sorter;
 	private Timeline timeline;
 
-	// TODO: sort ascendant
 
 	// TODO: java doc
 	public SortingChart(int[] bars, SortMethod method)
@@ -50,7 +49,6 @@ public class SortingChart extends BarChart
 					int[] paso = pasos.pollFirst();
 					System.out.println("intercambiando " + paso[0] + ", " + paso[1]);
 					swapBars(paso[0], paso[1]);
-//					sortingChart.colorizeBar(5, "blue");
 				}
 				else
 				{
@@ -66,7 +64,11 @@ public class SortingChart extends BarChart
 		timeline.play();
 	}
 
-	public void setDefaults()
+	/**
+	 * Set default style, hiding the axises and the legend, and
+	 * quitting the animations.
+	 */
+	private void setDefaults()
 	{
 		this.setAnimated(false);
 		this.setLegendVisible(false);
