@@ -323,7 +323,7 @@ public class SearchViewController extends Controller
 		// show the hash things
 		//		hBoxSpecs.getChildren().remove(hBoxSpecs.getChildren().size() - 2);
 		//		hBoxSpecs.getChildren().add(vBoxHashSpecs);
-		txtInterval.setText("500 microsegundos");
+		txtInterval.setText("500");
 		vBoxHashSpecs.setVisible(true);
 		setFreeWidth(vBoxHashSpecs, 190);
 		hBoxHashView.setVisible(true);
@@ -361,7 +361,7 @@ public class SearchViewController extends Controller
 		paintSetup();
 		hashTable.setTarget(Integer.parseInt(txtSearch.getText()));
 		double timePassed = hashTable.search() / 1000;
-		lblHashTime.setText(timePassed+"");
+		lblHashTime.setText(timePassed+" microsegundos");
 
 		Deque<Comparison> comparisons = hashTable.getComparisons();
 
