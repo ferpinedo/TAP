@@ -7,6 +7,7 @@ public class Comparison
 
 	public Comparison(int barIndex, boolean successful)
 	{
+		this.barIndex = barIndex;
 		this.successful = successful;
 	}
 

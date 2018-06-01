@@ -112,4 +112,34 @@ public class Searcher
 	{
 		this.comparisons = comparisons;
 	}
+
+	public SearchMethod getMethod()
+	{
+		return method;
+	}
+
+	public void setMethod(SearchMethod method)
+	{
+		this.method = method;
+	}
+
+	public int[] getData()
+	{
+		return data;
+	}
+
+	public void setData(int[] data)
+	{
+		this.data = data;
+	}
+
+	public int getTarget()
+	{
+		return target;
+	}
+
+	public void setTarget(int target)
+	{
+		this.target = target;
+	}
 }
