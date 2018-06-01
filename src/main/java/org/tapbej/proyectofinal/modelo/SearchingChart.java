@@ -13,17 +13,24 @@ import java.util.Queue;
 
 public class SearchingChart extends BarChart
 {
-	private int[] bars;
 	private Searcher searcher;
 	private Timeline animation;
+	private SearchMethod method;
+	private DataType dataType;
+	private int target;
+	private int[] bars;
+
 
 	// TODO: java doc
-	public SearchingChart(SearchMethod method, int[] bars, int target)
+	public SearchingChart(SearchMethod method, DataType dataType, int[] bars, int target)
 	{
 		super(new CategoryAxis(), new NumberAxis());
+		this.method = method;
 		this.bars = bars;
+		this.dataType = dataType;
+		this.target = target;
 		this.searcher = new Searcher(method, bars, target);
-		graphArray();
+		drawBars();
 		setDefaults();
 	}
 
@@ -36,6 +43,7 @@ public class SearchingChart extends BarChart
 
 		Queue<Comparison> comparisons = searcher.getComparisons();
 
+		System.out.println("comparisons size: "  + comparisons.size());
 		animation = new Timeline(new KeyFrame(Duration.millis(interval), action -> {
 			try
 			{
@@ -44,13 +52,14 @@ public class SearchingChart extends BarChart
 					//todo
 					Comparison comparison = comparisons.poll();
 					System.out.println("colorizing " + comparison.getBarIndex());
+
 					if (comparison.isSuccessful())
 					{
 						colorizeBar(comparison.getBarIndex(), "green");
 					}
 					else
 					{
-						colorizeBar(comparison.getBarIndex(), "red");
+						colorizeBar(comparison.getBarIndex(), "#000000ba");
 					}
 				}
 				else
@@ -87,7 +96,7 @@ public class SearchingChart extends BarChart
 		Integer temp = bars[firstPosition];
 		bars[firstPosition] = bars[secondPosition];
 		bars[secondPosition] = temp;
-		graphArray();
+		drawBars();
 	}
 
 	/**
@@ -96,12 +105,20 @@ public class SearchingChart extends BarChart
 	 * @param position
 	 * @param color
 	 */
-	private void colorizeBar(int position, String color)
+	public void colorizeBar(int position, String color)
 	{
 		Data<String, Number> bar = (Data<String, Number>) ((Series) this.getData().get(0)).getData().get(position);
 		System.out.println("Colorizing bar " + position + " (value: " + bar.getYValue() + ") to color " + color);
 
 		bar.getNode().setStyle("-fx-bar-fill: " + color + ";");
+	}
+
+	public void colorizeAllBars(String color)
+	{
+		for (int i = 0; i < bars.length; i++)
+		{
+			colorizeBar(i, color);
+		}
 	}
 
 	/**
@@ -126,19 +143,19 @@ public class SearchingChart extends BarChart
 	/**
 	 * Converts the values of the bars array list to a chart
 	 */
-	private void graphArray()
+	public void drawBars()
 	{
+		System.out.println("drawBars");
 		this.getData().clear();
+//		colorizeAllBars("orange");
 		int position = 0;
 		Series<String, Number> dataSeries = new Series<>();
 		for (int item : bars)
 		{
 			dataSeries.getData().add(new Data<>(position + "", item));
-			//			System.out.println("Bar added: <" + position + ", " + item + ">" );
 			position++;
 		}
-		this.getData().add(dataSeries);
-		System.out.println("Bars: " + bars.toString());
+		getData().add(dataSeries);
 	}
 
 	/**
@@ -166,5 +183,50 @@ public class SearchingChart extends BarChart
 	{
 		this.setCategoryGap(categoryGap);
 		this.setBarGap(barGap);
+		drawBars();
+	}
+
+	public SearchMethod getMethod()
+	{
+		return method;
+	}
+
+	public void setMethod(SearchMethod method)
+	{
+		this.method = method;
+		searcher.setMethod(method);
+	}
+
+	public int[] getBars()
+	{
+		return bars;
+	}
+
+	public void setBars(int[] bars)
+	{
+		this.bars = bars;
+		searcher.setData(bars);
+		drawBars();
+	}
+
+	public int getTarget()
+	{
+		return target;
+	}
+
+	public void setTarget(int target)
+	{
+		this.target = target;
+		searcher.setTarget(target);
+	}
+
+	public DataType getDataType()
+	{
+		return dataType;
+	}
+
+	public void setDataType(DataType dataType)
+	{
+		this.dataType = dataType;
 	}
 }
