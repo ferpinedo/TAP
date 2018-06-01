@@ -194,8 +194,8 @@ public class SearchingChart extends BarChart
 	public void setMethod(SearchMethod method)
 	{
 		this.method = method;
+		searcher.setMethod(method);
 	}
-
 
 	public int[] getBars()
 	{

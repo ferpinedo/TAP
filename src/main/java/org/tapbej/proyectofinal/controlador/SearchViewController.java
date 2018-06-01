@@ -26,13 +26,16 @@ public class SearchViewController extends Controller
 	@FXML
 	private TextField txtTarget;
 
+	@FXML
+	private TextField txtPercentage;
+
 
 	// data types indexes
 	private final int ORDERED_INDEX = 0;
 	private final int UNORDERED_INDEX = 1;
 	private final int RANDOM_INDEX = 2;
 	private final int MIXED_INDEX = 3;
-	private ObservableList<String> dataTypes = FXCollections.observableArrayList("Ordenados", "Desordenados", "Aleatorios", "Mezclados");
+	private ObservableList<String> dataTypes = FXCollections.observableArrayList("Mejor", "Peor", "Promedio", "Mixto");
 
 	// methods indexes
 	private final int SEQUENTIAL_INDEX = 0;
@@ -52,7 +55,7 @@ public class SearchViewController extends Controller
 		choiceBoxMethod.setItems(searchMethods);
 
 		// todo: type check
-		searchingChart = new SearchingChart(SearchMethod.SEQUENTIAL_SEARCH, DataType.ORDERED_LIST, GeneradorDatos.mejorCaso(Integer.parseInt(txtDataQuantity.getText())), 29);
+		searchingChart = new SearchingChart(SearchMethod.SEQUENTIAL_SEARCH, DataType.ORDERED_LIST, GeneradorDatos.mejorCaso(Integer.parseInt(txtDataQuantity.getText())), 0);
 		AnchorPane.setTopAnchor(searchingChart, 170.0);
 		AnchorPane.setBottomAnchor(searchingChart, 30.0);
 		AnchorPane.setLeftAnchor(searchingChart, 100.0);
@@ -81,17 +84,29 @@ public class SearchViewController extends Controller
 					data = GeneradorDatos.casoPromedio(Integer.parseInt(newValue));
 					break;
 				case MIXED_LIST:
-					//todo: mixed cases
-					//					data = GeneradorDatos.mejorCaso(Integer.parseInt(newValue));
+					data = GeneradorDatos.casoMixto(Integer.parseInt(newValue), Integer.parseInt(txtPercentage.getText()));
 					break;
 			}
 			searchingChart.setBars(data);
-			paintSetup(Integer.parseInt(txtTarget.getText()));
+			try
+			{
+				paintSetup(Integer.parseInt(txtTarget.getText()));
+			}
+			catch (NumberFormatException e)
+			{
+				paintSetup(0);
+			}
 		});
 
 		txtTarget.textProperty().addListener((observable, oldValue, newValue) -> {
 			searchingChart.setTarget(Integer.parseInt(newValue) - 1);
 			paintSetup(Integer.parseInt(newValue));
+		});
+
+		txtPercentage.textProperty().addListener((observable, oldValue, newValue) -> {
+			choiceBoxMethod.getSelectionModel().select(SEQUENTIAL_INDEX);
+			choiceBoxDataType.getSelectionModel().select(ORDERED_INDEX); // to trigger the event
+			choiceBoxDataType.getSelectionModel().select(MIXED_INDEX);
 		});
 
 		choiceBoxDataType.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldValue, newValue) -> {
@@ -113,12 +128,18 @@ public class SearchViewController extends Controller
 					break;
 				case MIXED_INDEX:
 					searchingChart.setDataType(DataType.MIXED_LIST);
-					// todo
-					//					data = GeneradorDatos.casoMixto(Integer.parseInt(txtDataQuantity.getText()));
+					data = GeneradorDatos.casoMixto(Integer.parseInt(txtDataQuantity.getText()), Integer.parseInt(txtPercentage.getText()));
 					break;
 			}
 			searchingChart.setBars(data);
-			paintSetup(Integer.parseInt(txtTarget.getText()));
+			try
+			{
+				paintSetup(Integer.parseInt(txtTarget.getText()));
+			}
+			catch (NumberFormatException e)
+			{
+				paintSetup(0);
+			}
 		});
 
 		choiceBoxMethod.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldValue, newValue) -> {
@@ -127,12 +148,15 @@ public class SearchViewController extends Controller
 			{
 				case SEQUENTIAL_INDEX:
 					unlockDataTypes();
+					searchingChart.setMethod(SearchMethod.SEQUENTIAL_SEARCH);
 					break;
 				case BST_INDEX:
 					lockDataTypes();
+					searchingChart.setMethod(SearchMethod.BINARY_SEARCH);
 					break;
 				case HASH_TABLE_INDEX:
 					unlockDataTypes();
+					searchingChart.setMethod(SearchMethod.HASH_TABLE_SEARCH);
 					break;
 			}
 		});
@@ -140,7 +164,7 @@ public class SearchViewController extends Controller
 
 	public void lockDataTypes()
 	{
-		dataTypes = FXCollections.observableArrayList("Ordenados");
+		dataTypes = FXCollections.observableArrayList("Mejor");
 		choiceBoxDataType.setItems(dataTypes);
 		choiceBoxDataType.getSelectionModel().selectFirst();
 	}
@@ -149,7 +173,7 @@ public class SearchViewController extends Controller
 	{
 		if (choiceBoxDataType.getItems().size() == 1)
 		{
-			dataTypes = FXCollections.observableArrayList("Ordenados", "Desordenados", "Aleatorios", "Mezclados");
+			dataTypes = FXCollections.observableArrayList("Mejor", "Peor", "Promedio", "Mixto");
 			choiceBoxDataType.setItems(dataTypes);
 			choiceBoxDataType.getSelectionModel().selectFirst();
 		}
@@ -159,12 +183,19 @@ public class SearchViewController extends Controller
 	public void handleSearch()
 	{
 		System.out.println("Displaying search");
-		// todo: type check
-		paintSetup(Integer.parseInt(txtTarget.getText()));
-		int interval = 50;
 
-		// todo: type check
-		searchingChart.setTarget(Integer.parseInt(txtTarget.getText()));
+		try
+		{
+			paintSetup(Integer.parseInt(txtTarget.getText()));
+			searchingChart.setTarget(Integer.parseInt(txtTarget.getText()));
+		}
+		catch (NumberFormatException e)
+		{
+			paintSetup(0);
+		}
+
+		int interval = 20;
+
 		searchingChart.search(interval);
 	}
 
