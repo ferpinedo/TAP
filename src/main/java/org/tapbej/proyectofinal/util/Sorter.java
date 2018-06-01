@@ -49,9 +49,11 @@ public class Sorter
 			case SHAKER_SORT:
 				shakerSort(data);
 				break;
+			case QUICK_SORT:
+				quicksort(data, 0, data.length-1);
 		}
 		long endTime = System.nanoTime();
-		System.out.println("Initial nano secs: " + initialTime + " | End nano secs: " + endTime);
+//		System.out.println("Initial nano secs: " + initialTime + " | End nano secs: " + endTime);
 		transcurredMicros = (endTime - initialTime) / 1000;
 		totalMovements = movements.size();
 	}
@@ -188,9 +190,7 @@ public class Sorter
 
 			if (i <= j)
 			{
-				auxiliar = data[j];
-				data[j] = data[i];
-				data[i] = auxiliar;
+				intercambiarDatos(data, j, i);
 				i++;
 				j--;
 			}
