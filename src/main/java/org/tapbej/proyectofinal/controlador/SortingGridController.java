@@ -1,10 +1,7 @@
 package org.tapbej.proyectofinal.controlador;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import org.tapbej.proyectofinal.modelo.GeneradorDatos;
 import org.tapbej.proyectofinal.modelo.SortMethod;
