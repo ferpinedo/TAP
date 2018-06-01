@@ -2,9 +2,10 @@ package org.tapbej.proyectofinal.controlador;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import org.tapbej.proyectofinal.modelo.GeneradorDatos;
 import org.tapbej.proyectofinal.modelo.SortMethod;
 import org.tapbej.proyectofinal.modelo.SortingChart;
@@ -22,7 +23,38 @@ public class SortingGridController extends Controller
 	private TextField txtMillis;
 
 	@FXML
+	private TextField txtSortedPercentage;
+
+	@FXML
 	private Button btnBack;
+
+	@FXML
+	private Label lblSelectionSort;
+
+	@FXML
+	private Label lblInsertionSort;
+
+	@FXML
+	private Label lblBubbleSort;
+
+	@FXML
+	private Label lblShakerSort;
+
+	@FXML
+	private Label lblQuickSort;
+
+	@FXML
+	private Label lblWorstCase;
+
+	@FXML
+	private Label lblBestCase;
+
+	@FXML
+	private Label lblRandomCase;
+
+	@FXML
+	private Label lblMixedCase;
+
 
 	private SortingChart[] sortingChartsSelectionSort;
 	private SortingChart[] sortingChartsBubbleSort;
@@ -30,36 +62,92 @@ public class SortingGridController extends Controller
 	private SortingChart[] sortingChartsInsertionSort;
 	private SortingChart[] sortingChartsQuickSort;
 
-	private int interval = 200;
-	private int size = 50;
+	private int interval;
+	private int size;
+	private int percent;
 
 	@Override
 	void setKeyListener()
 	{
+//		txtDataQuantity.textProperty().addListener((observable, oldValue, newValue) -> {
+//			size = Integer.parseInt(newValue);
+//			System.out.println("New size: " + size);
+//			drawCharts();
+//		});
+//
+//		txtMillis.textProperty().addListener((observable, oldValue, newValue) -> {
+//			interval = Integer.parseInt(newValue);
+//			System.out.println("New interval: " + interval);
+//			drawCharts();
+//		});
+//
+//		txtSortedPercentage.textProperty().addListener((observable, oldValue, newValue) -> {
+//			percent = Integer.parseInt(newValue);
+//			System.out.println("New sorted percentage: " + percent);
+//			drawCharts();
+//		});
 	}
 
 	@Override
 	void setDefaultCloseOperation()
 	{
+		stopSorting();
 	}
 
 	@Override
 	void runSpecificOperations()
 	{
+		lblBestCase.setTooltip(new Tooltip("Genera un arreglo de enteros ordenados\n" +
+				  											"de forma ascendente"));
+		lblWorstCase.setTooltip(new Tooltip("Genera un arreglo de enteros ordenados\n" +
+				  												"de forma descentende"));
+		lblRandomCase.setTooltip(new Tooltip("Genera un arreglo de enteros ordenados\n" +
+				  "    * de forma pseudorandom. Los elementos pueden repetirse\n" +
+				  "    * pero no salirse del límite especificado"));
+		lblMixedCase.setTooltip(new Tooltip("Genera un arreglo de enteros con un " +
+				  												"porcentaje de ellos ordenado y otro con " +
+				  												"\nelementos pseudorandom"));
+
+		lblSelectionSort.setTooltip(new Tooltip("Encuentra el valor menor de la parte " +
+				  													"\nposiblemente no ordenada y lo intercambia " +
+				  													"\ncon la primera posición de dicha parte."));
+		lblBubbleSort.setTooltip(new Tooltip("Compara valores adyaccentes y los intercambia " +
+				  												"\nsi no están ordenados correctamente"));
+		lblInsertionSort.setTooltip(new Tooltip("Se inserta elemento por elmento en su posición " +
+				  													"\ncorrecta. También conocido como \"Baraja\""));
+		lblShakerSort.setTooltip(new Tooltip("Compara valores adyaccentes y los intercambia si no " +
+															  "\nestán ordenados correctamente, yendo de un" +
+															  "\nextremo a otro y viceversa hasta terminar de ordenarlos."));
+		lblQuickSort.setTooltip(new Tooltip("Es un algoritmo basado en la técnica de divide y vencerás, " +
+				  												"\nque permite, en promedio, ordenar n elementos en un tiempo " +
+				  												"\nproporcional a n log n. "));
 	}
 
 	@FXML
 	public void initialize()
 	{
+		interval = Integer.parseInt(txtMillis.getText());
+		size = Integer.parseInt(txtDataQuantity.getText());
+		percent = Integer.parseInt(txtSortedPercentage.getText());
+		drawCharts();
+	}
+
+	@FXML
+	public void handleTextChanged()
+	{
+		interval = Integer.parseInt(txtMillis.getText());
+		size = Integer.parseInt(txtDataQuantity.getText());
+		percent = Integer.parseInt(txtSortedPercentage.getText());
 		drawCharts();
 	}
 
 	public void drawCharts()
 	{
+
 		int[] dataBestCase = GeneradorDatos.mejorCaso(size);
 		int[] dataWorstCase = GeneradorDatos.peorCaso(size);
 		int[] dataRandomCase = GeneradorDatos.casoPromedio(size);
-		int[] dataMixedCase = GeneradorDatos.casoMixto(size, 50);
+		int[] dataMixedCase = GeneradorDatos.casoMixto(size, percent);
 
 		int rowBestCase = 1;
 		int rowWorstCase = 2;
@@ -156,16 +244,20 @@ public class SortingGridController extends Controller
 
 	public void handleBack()
 	{
-//		stopSorting();
+		stopSorting();
 		mainApp.showTopicSelectionView();
 		mainApp.getSecondaryStage().close();
 	}
 
 	public void handleSort()
 	{
+		stopSorting();
+
 		interval = Integer.parseInt(txtMillis.getText());
 		size = Integer.parseInt(txtDataQuantity.getText());
+		percent = Integer.parseInt(txtSortedPercentage.getText());
 		drawCharts();
+		System.out.println("New size: " + size);
 
 		for (SortingChart sortingChart: sortingChartsSelectionSort)
 			sortingChart.sort(interval);
@@ -179,8 +271,8 @@ public class SortingGridController extends Controller
 		for (SortingChart sortingChart: sortingChartsInsertionSort)
 			sortingChart.sort(interval);
 
-//		for (SortingChart sortingChart: sortingChartsQuickSort)
-//			sortingChart.sort(interval);
+		for (SortingChart sortingChart: sortingChartsQuickSort)
+			sortingChart.sort(interval);
 	}
 
 	public void stopSorting()
@@ -197,8 +289,8 @@ public class SortingGridController extends Controller
 		for (SortingChart sortingChart: sortingChartsInsertionSort)
 			sortingChart.stopSorting();
 
-//		for (SortingChart sortingChart: sortingChartsQuickSort)
-//			sortingChart.stopSorting();
+		for (SortingChart sortingChart: sortingChartsQuickSort)
+			sortingChart.stopSorting();
 	}
 
 

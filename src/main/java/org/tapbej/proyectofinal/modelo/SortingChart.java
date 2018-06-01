@@ -18,9 +18,9 @@ public class SortingChart extends BarChart
 	private Sorter sorter;
 	private Timeline timeline;
 
-	private String movingColor = "red";
-	private String defaultColor = "#000000";
-	private String finishColor = "blue";
+	private String movingColor = "#ffc107";
+	private String defaultColor = "#455a64";
+	private String finishColor = "#00796b";
 
 	private boolean stop = false;
 
@@ -64,12 +64,16 @@ public class SortingChart extends BarChart
 				if (stop)
 				{
 					timeline.stop();
+					System.out.println("Timeline stopped");
+					this.getData().clear();
+					hideTime();
+					stop = false;
 				}
 
 				if (movements.size() != 0)
 				{
 					Movement movement = movements.pollFirst();
-					System.out.println("intercambiando " + movement.from + ", " + movement.to);
+//					System.out.println("intercambiando " + movement.from + ", " + movement.to);
 					swapBars(movement.from, movement.to);
 				}
 				else
