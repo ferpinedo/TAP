@@ -61,6 +61,7 @@ public class SearchViewController extends Controller
 
 		searchingChart.drawBars();
 		searchingChart.colorizeAllBars("#38383852");
+
 		txtDataQuantity.textProperty().addListener((observable, oldValue, newValue) -> {
 			if (newValue.equals("")) // to prevent exceptions
 			{
@@ -85,13 +86,12 @@ public class SearchViewController extends Controller
 					break;
 			}
 			searchingChart.setBars(data);
-			searchingChart.colorizeAllBars("#38383852");
+			paintSetup(Integer.parseInt(txtTarget.getText()));
 		});
 
 		txtTarget.textProperty().addListener((observable, oldValue, newValue) -> {
 			searchingChart.setTarget(Integer.parseInt(newValue) - 1);
-			searchingChart.colorizeBar(Integer.parseInt(oldValue) - 1, "#38383852");
-			searchingChart.colorizeBar(Integer.parseInt(newValue) - 1, "#fc2810");
+			paintSetup(Integer.parseInt(newValue));
 		});
 
 		choiceBoxDataType.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldValue, newValue) -> {
@@ -118,7 +118,7 @@ public class SearchViewController extends Controller
 					break;
 			}
 			searchingChart.setBars(data);
-			searchingChart.colorizeAllBars("orange");
+			paintSetup(Integer.parseInt(txtTarget.getText()));
 		});
 
 		choiceBoxMethod.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldValue, newValue) -> {
@@ -160,8 +160,7 @@ public class SearchViewController extends Controller
 	{
 		System.out.println("Displaying search");
 		// todo: type check
-
-
+		paintSetup(Integer.parseInt(txtTarget.getText()));
 		int interval = 50;
 
 		// todo: type check
@@ -175,6 +174,18 @@ public class SearchViewController extends Controller
 		mainApp.getPrimaryStage().requestFocus();
 	}
 
+	private void paintSetup(int target)
+	{
+		searchingChart.colorizeAllBars("#38383852");
+		for (int i = 0; i < searchingChart.getBars().length; i++)
+		{
+			if (target == searchingChart.getBars()[i])
+			{
+				searchingChart.colorizeBar(i, "#fc2810");
+				break;
+			}
+		}
+	}
 
 	@Override
 	void setKeyListener()

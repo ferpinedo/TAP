@@ -153,10 +153,9 @@ public class SearchingChart extends BarChart
 		for (int item : bars)
 		{
 			dataSeries.getData().add(new Data<>(position + "", item));
-			//			System.out.println("Bar added: <" + position + ", " + item + ">" );
 			position++;
 		}
-		this.getData().add(dataSeries);
+		getData().add(dataSeries);
 	}
 
 	/**
@@ -206,6 +205,7 @@ public class SearchingChart extends BarChart
 	public void setBars(int[] bars)
 	{
 		this.bars = bars;
+		searcher.setData(bars);
 		drawBars();
 	}
 

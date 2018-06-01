@@ -36,7 +36,7 @@
             <VBox alignment="CENTER_LEFT" layoutX="444.0" layoutY="10.0" prefHeight="74.0" prefWidth="114.0" spacing="3.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="127.0" text="Dato buscado" />
-                  <TextField fx:id="txtTarget" prefHeight="25.0" prefWidth="143.0" text="29" />
+                  <TextField fx:id="txtTarget" prefHeight="25.0" prefWidth="143.0" />
                </children>
             </VBox>
          </children>
