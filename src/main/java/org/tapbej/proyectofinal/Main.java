@@ -83,10 +83,11 @@ public class Main extends Application
 		try
 		{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("vista/SortingView.fxml"));
+			loader.setLocation(Main.class.getResource("vista/SortingGridView.fxml"));
 			AnchorPane ventana = loader.load();
 
 			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.setMaximized(true);
 			secondaryStage.show();
 			Controller controller = loader.getController();
 			controller.start(this);
