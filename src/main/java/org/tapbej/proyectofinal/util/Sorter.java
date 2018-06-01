@@ -1,5 +1,6 @@
 package org.tapbej.proyectofinal.util;
 
+import org.tapbej.proyectofinal.modelo.Movement;
 import org.tapbej.proyectofinal.modelo.SortMethod;
 
 import java.util.ArrayDeque;
@@ -15,7 +16,7 @@ import java.util.Queue;
  */
 public class Sorter
 {
-	private Deque<int[]> pasos;
+	private Deque<Movement> movements;
 	private SortMethod method;
 	private int[] data;
 	private double transcurredMicros;
@@ -24,7 +25,7 @@ public class Sorter
 	public Sorter(int[] data, SortMethod method)
 	{
 		this.method = method;
-		this.pasos = new ArrayDeque<>();
+		this.movements = new ArrayDeque<>();
 		this.data = new int[data.length];
 		System.arraycopy(data, 0, this.data, 0, data.length);
 	}
@@ -52,7 +53,7 @@ public class Sorter
 		long endTime = System.nanoTime();
 		System.out.println("Initial nano secs: " + initialTime + " | End nano secs: " + endTime);
 		transcurredMicros = (endTime - initialTime) / 1000;
-		totalMovements = pasos.size();
+		totalMovements = movements.size();
 	}
 
 
@@ -65,7 +66,7 @@ public class Sorter
 	 */
 	private void intercambiarDatos(int[] data, int i, int j)
 	{
-		pasos.add(new int[]{i, j});
+		movements.add(new Movement(i, j));
 		int temp = data[i];
 		data[i] = data[j];
 		data[j] = temp;
@@ -330,9 +331,9 @@ public class Sorter
 	}
 
 
-	public Deque<int[]> getPasos()
+	public Deque<Movement> getMovements()
 	{
-		return pasos;
+		return movements;
 	}
 
 	public double getTranscurredMicros()
