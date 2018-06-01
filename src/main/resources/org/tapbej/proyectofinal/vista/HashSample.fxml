@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPaneChart" prefHeight="537.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tapbej.proyectofinal.controlador.SearchViewController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="120.0" prefWidth="832.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <VBox alignment="CENTER_RIGHT" prefHeight="112.0" prefWidth="130.0" spacing="10.0">
+               <children>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="130.0" spacing="3.0">
+                     <children>
+                        <Label text="Método de búsqueda" />
+                        <ChoiceBox fx:id="choiceBoxMethod" prefWidth="150.0" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="130.0" spacing="3.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="127.0" text="Intervalo (ms)" textAlignment="CENTER" />
+                        <TextField fx:id="txtInterval" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="50" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Separator maxHeight="90.0" minHeight="50.0" orientation="VERTICAL" prefHeight="90.0" prefWidth="5.0" />
+            <VBox fx:id="vBoxNotHashSpecs" alignment="CENTER_LEFT" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="0.0" spacing="10.0" visible="false">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="132.0" spacing="30.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="111.0" spacing="3.0">
+                           <children>
+                              <Label text="Caso" />
+                              <ChoiceBox fx:id="choiceBoxDataType" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="70.0" spacing="3.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="127.0" text="Cantidad" />
+                              <TextField fx:id="txtDataQuantity" prefHeight="25.0" prefWidth="80.0" text="50" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" layoutX="444.0" layoutY="10.0" prefHeight="74.0" prefWidth="70.0" spacing="3.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="127.0" text="Objetivo" />
+                              <TextField fx:id="txtTarget" prefHeight="25.0" prefWidth="80.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets right="35.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="238.0" spacing="30.0">
+                     <children>
+                        <VBox fx:id="vBoxPercentage" prefHeight="42.0" prefWidth="117.0" spacing="3.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="127.0" text="Porcentaje ordenado" />
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <TextField fx:id="txtPercentage" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="50" />
+                                    <Label text="  %" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Button mnemonicParsing="false" onAction="#handleSearch" prefHeight="38.0" prefWidth="87.0" text="Buscar">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="vBoxHashSpecs" alignment="CENTER_LEFT" layoutX="335.0" layoutY="10.0" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="189.0" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="9.0" prefWidth="358.0" spacing="30.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="145.0" spacing="10.0">
+                           <children>
+                              <TextField fx:id="txtInsert" prefHeight="25.0" prefWidth="80.0" />
+                              <Button mnemonicParsing="false" prefWidth="60.0" text="Insertar" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets right="35.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="358.0" spacing="30.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="145.0" spacing="10.0">
+                           <children>
+                              <TextField fx:id="txtDelete" prefHeight="25.0" prefWidth="80.0" />
+                              <Button mnemonicParsing="false" prefWidth="60.0" text="Borrar" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="75.0" prefHeight="0.0" prefWidth="358.0" spacing="30.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="145.0" spacing="10.0">
+                           <children>
+                              <TextField fx:id="txtSearch" prefHeight="25.0" prefWidth="80.0" />
+                              <Button mnemonicParsing="false" prefWidth="60.0" text="Buscar" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#handleBack" text="Regresar" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
+      <Label alignment="CENTER" layoutX="345.0" layoutY="9.0" prefHeight="43.0" prefWidth="240.0" text="Búsqueda" textAlignment="CENTER" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font name="Roboto Medium" size="30.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" spacing="50.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+         <children>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefWidth="120.0" spacing="5.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fc2810" height="15.0" stroke="TRANSPARENT" strokeType="INSIDE" width="15.0" />
+                  <Label text="Objetivo" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="96.0" layoutY="10.0" prefWidth="120.0" spacing="5.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000ba" height="15.0" stroke="TRANSPARENT" strokeType="INSIDE" width="15.0" />
+                  <Label text="Visitado" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="182.0" layoutY="10.0" prefWidth="120.0" spacing="5.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#38383852" height="15.0" stroke="TRANSPARENT" strokeType="INSIDE" width="15.0" />
+                  <Label text="No visitado" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_CENTER" layoutX="203.0" layoutY="245.0" prefHeight="185.0" prefWidth="407.0" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="170.0">
+         <children>
+            <VBox alignment="BOTTOM_CENTER">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="84.0" style="-fx-border-color: gray;">
+                     <children>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="3" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="6" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="4" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="2" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="84.0" style="-fx-border-color: red;">
+                     <children>
+                        <Label text="Label" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox alignment="BOTTOM_CENTER" layoutX="334.0" layoutY="10.0">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="84.0" style="-fx-border-color: gray;">
+                     <children>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="3" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="6" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="4" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="2" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="84.0" style="-fx-border-color: red;">
+                     <children>
+                        <Label text="Label" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox alignment="BOTTOM_CENTER" layoutX="391.0" layoutY="10.0">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="84.0" style="-fx-border-color: gray;">
+                     <children>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="3" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="6" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="4" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="2" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="84.0" style="-fx-border-color: red;">
+                     <children>
+                        <Label text="Label" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox alignment="BOTTOM_CENTER" layoutX="448.0" layoutY="10.0">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="84.0" style="-fx-border-color: gray;">
+                     <children>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="3" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="6" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="4" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="2" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="84.0" style="-fx-border-color: red;">
+                     <children>
+                        <Label text="Label" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox alignment="BOTTOM_CENTER" layoutX="505.0" layoutY="10.0">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="84.0" style="-fx-border-color: gray;">
+                     <children>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="3" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="6" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="4" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="2" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="84.0" style="-fx-border-color: red;">
+                     <children>
+                        <Label text="Label" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox alignment="BOTTOM_CENTER" layoutX="562.0" layoutY="10.0">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="84.0" style="-fx-border-color: gray;">
+                     <children>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="3" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="6" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="4" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="2" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="32" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="84.0" style="-fx-border-color: red;">
+                     <children>
+                        <Label text="Label" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
