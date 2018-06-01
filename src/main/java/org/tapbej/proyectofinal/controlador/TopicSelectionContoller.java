@@ -3,6 +3,7 @@ package org.tapbej.proyectofinal.controlador;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.tapbej.proyectofinal.Main;
@@ -26,6 +27,9 @@ public class TopicSelectionContoller extends Controller
 
 	@FXML
 	private ImageView image;
+
+	@FXML
+	private ScrollPane scrollPane;
 
 	private final String INTRO_TEXT = "TAP (Tópicos Avanzados de Programación) es un proyecto que consiste en la representación y demostración de algoritmos avanzados de programación." +
 			  "\n\nAutores: \n  - Alejandro Alberto Ramírez Vilchis\n  - Fernando Josué Pinedo Orta\n  - Jesús Orlando Alvarado Pérez" +
@@ -80,6 +84,7 @@ public class TopicSelectionContoller extends Controller
 	{
 		lblTitle.setText("TAP");
 		lblDescription.setText(INTRO_TEXT);
+		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 		image.setImage(new Image(mainApp.getClass().getResource("iconos/algorithm.png").toExternalForm()));
 	}
 
@@ -87,6 +92,7 @@ public class TopicSelectionContoller extends Controller
 	{
 		lblTitle.setText("Recursividad");
 		lblDescription.setText(RECURSION_TEXT);
+		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		image.setImage(new Image(mainApp.getClass().getResourceAsStream("iconos/recursionLogo2.png")));
 	}
 
@@ -94,6 +100,7 @@ public class TopicSelectionContoller extends Controller
 	{
 		lblTitle.setText("Ordenamiento");
 		lblDescription.setText(SORTING_TEXT);
+		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		image.setImage(new Image(mainApp.getClass().getResource("iconos/sortingLogo2.png").toExternalForm()));
 	}
 
@@ -101,6 +108,7 @@ public class TopicSelectionContoller extends Controller
 	{
 		lblTitle.setText("Búsqueda");
 		lblDescription.setText(SEARCH_TEXT);
+		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		image.setImage(new Image(mainApp.getClass().getResource("iconos/searchLogo2.png").toExternalForm()));
 	}
 
