@@ -1,6 +1,7 @@
 package org.tapbej.proyectofinal;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.tapbej.proyectofinal.controlador.Controller;
+import org.tapbej.proyectofinal.controlador.NReinasController;
 
 
 public class Main extends Application
@@ -140,28 +142,46 @@ public class Main extends Application
 
 
 
-	public void mostrarNReinas()
+	public void showNQueens()
 	{
+//		try
+//		{
+
+		Process proc = null;
 		try
 		{
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("vista/NReinasView.fxml"));
-			AnchorPane ventana = loader.load();
-
-			Controller controlador = loader.getController();
-			controlador.start(this);
-
-
-			secondaryStage.setScene(new Scene(ventana));
-			secondaryStage.show();
-			secondaryStage.centerOnScreen();
-			secondaryStage.setTitle("N-Reinas");
-
-		}
-		catch (IOException e)
+			String dir = this.getClass().getResource("target/nreinas-1.0-SNAPSHOT-jar-with-dependencies.jar").toString().replace("file:/", "");
+			System.out.println(dir);
+//			proc = Runtime.getRuntime().exec("java -jar " + dir);
+			ProcessBuilder builder = new ProcessBuilder("java -jar " + dir);
+			Process process = builder.start();
+		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
+		// Then retreive the process output
+//			InputStream in = proc.getInputStream();
+//			InputStream err = proc.getErrorStream();
+
+
+//			FXMLLoader loader = new FXMLLoader();
+//			loader.setLocation(Main.class.getResource("vista/NReinasView.fxml"));
+//			AnchorPane ventana = loader.load();
+//
+//			Controller controlador = loader.getController();
+//			controlador.start(this);
+//
+//
+//			secondaryStage.setScene(new Scene(ventana));
+//			secondaryStage.show();
+//			secondaryStage.centerOnScreen();
+//			secondaryStage.setTitle("N-Reinas");
+//
+//		}
+//		catch (IOException e)
+//		{
+//			e.printStackTrace();
+//		}
 	}
 
 

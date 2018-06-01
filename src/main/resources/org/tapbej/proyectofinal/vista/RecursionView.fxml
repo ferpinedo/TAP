@@ -80,7 +80,14 @@
             <Insets top="70.0" />
          </padding>
       </VBox>
-      <Button mnemonicParsing="false" onAction="#handleBack" text="Regresar" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <Button mnemonicParsing="false" onAction="#handleBack" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0">
+               <image>
+                  <Image url="@../iconos/back.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Label alignment="CENTER" layoutX="160.0" layoutY="343.0" prefHeight="43.0" prefWidth="281.0" text="Recursividad" textAlignment="CENTER" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font name="Roboto Medium" size="30.0" />

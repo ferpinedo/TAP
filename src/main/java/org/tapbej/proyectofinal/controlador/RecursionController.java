@@ -1,7 +1,6 @@
 package org.tapbej.proyectofinal.controlador;
 
 import javafx.fxml.FXML;
-import org.tapbej.proyectofinal.Main;
 
 public class RecursionController extends Controller
 {
@@ -15,7 +14,7 @@ public class RecursionController extends Controller
 	@FXML
 	public void handleNReinas()
 	{
-		mainApp.mostrarNReinas();
+		mainApp.showNQueens();
 	}
 
 

@@ -19,13 +19,13 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="752.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tapbej.proyectofinal.controlador.NReinasController">
+<AnchorPane prefHeight="852.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tapbej.proyectofinal.controlador.NReinasController">
    <children>
-      <SplitPane dividerPositions="0.5609973285841496" prefHeight="852.0" prefWidth="1184.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.5" prefHeight="852.0" prefWidth="1184.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-            <BorderPane fx:id="areaTablero" prefHeight="750.0" prefWidth="697.0">
+            <BorderPane fx:id="areaTablero">
                <center>
-                  <GridPane hgap="1.0" maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" stylesheets="@../stylesheets/style.css">
+                  <GridPane hgap="1.0" maxHeight="700.0" maxWidth="700.0" minHeight="700.0" minWidth="700.0" prefHeight="700.0" prefWidth="700.0" stylesheets="@../stylesheets/style.css">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
@@ -58,27 +58,33 @@
                      </children>
                   </GridPane>
                </center>
+               <left>
+                  <Region prefHeight="752.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <Region prefHeight="752.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
+               </right>
                <bottom>
                   <HBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
                      <children>
                         <Button fx:id="btnResolver" mnemonicParsing="false" onAction="#handleBtnResolver" prefHeight="39.0" prefWidth="108.0" styleClass="b" stylesheets="@../stylesheets/style.css" text="Resolver">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="18.0" />
                            </font>
                         </Button>
                         <Button fx:id="btnNext" mnemonicParsing="false" onAction="#handleNext" prefHeight="39.0" prefWidth="187.0" styleClass="b" stylesheets="@../stylesheets/style.css" text="Siguiente solución">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="18.0" />
                            </font>
                         </Button>
                         <Label fx:id="lblStatus" prefHeight="27.0" prefWidth="318.0" text="Estátus: Encontrando más soluciones...">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                      <padding>
-                        <Insets bottom="20.0" left="20.0" />
+                        <Insets bottom="20.0" />
                      </padding>
                   </HBox>
                </bottom>
@@ -87,7 +93,7 @@
                <children>
                   <Label text="N Reinas">
                      <font>
-                        <Font name="System Italic" size="30.0" />
+                        <Font name="System Italic" size="46.0" />
                      </font>
                   </Label>
                   <Region prefHeight="0.0" prefWidth="336.0" />
@@ -123,7 +129,7 @@
                      <children>
                         <Label text="Número de reinas: ">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="21.0" />
                            </font>
                         </Label>
                         <TextField fx:id="txtNReinas" alignment="CENTER" prefHeight="25.0" prefWidth="44.0" text="4">
@@ -134,9 +140,9 @@
                   </HBox>
                   <HBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <Button fx:id="btnJugar" mnemonicParsing="false" onAction="#handleBtnJugar" prefHeight="31.0" prefWidth="133.0" styleClass="b" stylesheets="@../stylesheets/style.css" text="Jugar">
+                        <Button fx:id="btnJugar" mnemonicParsing="false" onAction="#handleBtnJugar" prefHeight="60.0" prefWidth="133.0" styleClass="b" stylesheets="@../stylesheets/style.css" text="Jugar">
                            <font>
-                              <Font size="19.0" />
+                              <Font size="26.0" />
                            </font>
                         </Button>
                      </children>
@@ -189,7 +195,7 @@
                         </AnchorPane>
                      </content>
                      <font>
-                        <Font size="15.0" />
+                        <Font size="18.0" />
                      </font>
                   </TitledPane>
                   <Label fx:id="timerLabel" alignment="CENTER" prefHeight="35.0" prefWidth="323.0">
