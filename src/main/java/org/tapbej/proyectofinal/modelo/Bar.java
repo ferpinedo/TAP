@@ -1,10 +1,18 @@
 package org.tapbej.proyectofinal.modelo;
 
+/**
+ * Class model for chart bar
+ */
 public class Bar
 {
 	private int value;
 	private String color;
 
+	/**
+	 *  Constructor of bar
+	 * @param value bar height
+	 * @param color bar color
+	 */
 	public Bar(int value, String color)
 	{
 		this.value = value;

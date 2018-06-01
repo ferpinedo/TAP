@@ -14,7 +14,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="50.0">
                <children>
-                  <Button fx:id="btnRecursion" mnemonicParsing="false" onAction="#handleRecursion" onMouseEntered="#displayRecursionDescription" onMouseExited="#displayIntro" prefHeight="55.0" prefWidth="230.0" text="Recursividad" textAlignment="CENTER">
+                  <Button fx:id="btnRecursion" lineSpacing="10.0" mnemonicParsing="false" onAction="#handleRecursion" onMouseEntered="#displayRecursionDescription" onMouseExited="#displayIntro" prefHeight="55.0" prefWidth="230.0" text="Recursividad" textAlignment="CENTER">
                      <font>
                         <Font name="Roboto" size="19.0" />
                      </font>
