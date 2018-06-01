@@ -46,6 +46,9 @@ public class SearchViewController extends Controller
 	private HBox hBoxHashView;
 
 	@FXML
+	private HBox hBoxSpecs;
+
+	@FXML
 	private AnchorPane anchorPaneChart;
 
 	@FXML
@@ -280,6 +283,8 @@ public class SearchViewController extends Controller
 
 
 		// show the hash things
+//		hBoxSpecs.getChildren().remove(hBoxSpecs.getChildren().size() - 2);
+//		hBoxSpecs.getChildren().add(Object.clone(vBoxNotHashSpecs));
 		vBoxNotHashSpecs.setVisible(true);
 		setFreeWidth(vBoxNotHashSpecs, 330);
 
@@ -311,6 +316,8 @@ public class SearchViewController extends Controller
 
 
 		// show the hash things
+//		hBoxSpecs.getChildren().remove(hBoxSpecs.getChildren().size() - 2);
+//		hBoxSpecs.getChildren().add(vBoxHashSpecs);
 		vBoxHashSpecs.setVisible(true);
 		setFreeWidth(vBoxHashSpecs, 190);
 		hBoxHashView.setVisible(true);
@@ -345,12 +352,12 @@ public class SearchViewController extends Controller
 
 	public void searchHash()
 	{
-
+		paintSetup();
 		hashTable.setTarget(Integer.parseInt(txtSearch.getText()));
 		double timePassed = hashTable.search() / 1000;
-		//		setTimePassed(timePassed);
+//				setTimePassed(timePassed);
 
-		Queue<Comparison> comparisons = hashTable.getComparisons();
+		Deque<Comparison> comparisons = hashTable.getComparisons();
 
 		System.out.println("comparisons size: " + comparisons.size());
 
@@ -361,14 +368,13 @@ public class SearchViewController extends Controller
 				{
 					//todo
 					Comparison comparison = comparisons.poll();
-					System.out.println("colorizing " + comparison.getBarIndex());
 
 					if (comparison.isSuccessful())
 					{
-						colorizeItem(comparison.getBucket(), comparison.getBarIndex(), "green");
+						colorizeItem(comparison.getBucket(), comparison.getItemIndex(), "green");
 					} else
 					{
-						colorizeItem(comparison.getBucket(), comparison.getBarIndex(), "red");
+						colorizeItem(comparison.getBucket(), comparison.getItemIndex(), "red");
 					}
 				} else
 				{
@@ -387,27 +393,57 @@ public class SearchViewController extends Controller
 
 	private void colorizeItem(int bucketNumber, int itemIndex, String color)
 	{
-		for (int i = 0; i < hBoxHashView.getChildren().size(); i++)
+		System.out.println("Going to colorize bucket " + bucketNumber + ", item index: " + itemIndex + ", color: " + color);
+		ObservableList<Node> containers = hBoxHashView.getChildren();
+		System.out.println("Cast successful");
+		for (int i = 0; i < containers.size(); i++)
 		{
-			Label bucketLabel = null;
-			try
-			{
-				VBox bucket = (VBox) ((VBox) hBoxHashView.getChildren().get(i)).getChildren().get(1);
-				bucketLabel = (Label) bucket.getChildren().get(0);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				continue;
-			}
+			VBox container = (VBox) containers.get(i);
 
+			VBox bucket = (VBox) container.getChildren().get(1);
+			Label bucketLabel = (Label) bucket.getChildren().get(0);
+
+			System.out.println("Bucket label: " + bucketLabel);
 			if (bucketLabel.getText().equals(bucketNumber + ""))
 			{
-				VBox listContainer = (VBox) ((VBox) hBoxHashView.getChildren().get(i)).getChildren().get(0);
+				System.out.println("Bucket is there");
+				VBox listContainer = (VBox) container.getChildren().get(0);
+				itemIndex = (listContainer.getChildren().size() - 1) - itemIndex;
 				listContainer.getChildren().get(itemIndex).setStyle("-fx-background-color: " + color + ";");
+			}
+			else
+			{
+				System.out.println("Bucket not there");
 			}
 		}
 		//		.setStyle("-fx-bar-fill: " + color + ";");
+	}
+
+	public void paintSetup()
+	{
+		ObservableList<Node> containers = hBoxHashView.getChildren();
+		System.out.println("Cast successful");
+		for (int i = 0; i < containers.size(); i++)
+		{
+			VBox container = (VBox) containers.get(i);
+
+			VBox bucket = (VBox) container.getChildren().get(1);
+			VBox listContainer = (VBox) container.getChildren().get(0);
+
+			Label bucketLabel = (Label) bucket.getChildren().get(0);
+
+			bucket.setStyle("-fx-background-color: 'transparent'");
+			bucket.setStyle("-fx-border-color: 'blue'");
+
+			for (int j = 0; j < listContainer.getChildren().size(); j++)
+			{
+				VBox item = (VBox) listContainer.getChildren().get(j);
+				item.setStyle("-fx-background-color: 'transparent'");
+				item.setStyle("-fx-border-color: 'cyan'");
+			}
+
+			System.out.println("Bucket label: " + bucketLabel);
+		}
 	}
 
 

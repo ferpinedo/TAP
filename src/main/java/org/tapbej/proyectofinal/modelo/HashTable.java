@@ -59,15 +59,20 @@ public class HashTable
 
 		int bucketAddress = getBucketAddress(target);
 
+		System.out.println("Searching in bucket: " + bucketAddress);
+
 		if (hashTable.containsKey(bucketAddress))
 		{
+			System.out.println("I have that bucket!");
 			for (int i = 0; i < hashTable.get(bucketAddress).size(); i++)
 			{
 				if (target == hashTable.get(bucketAddress).get(i))
 				{
 					comparisons.add(new Comparison(bucketAddress, i, true));
 					System.out.println("Data found");
-					break;
+					long endTime = System.nanoTime();
+					System.out.println("Initial nano secs: " + initialTime + " | End nano secs: " + endTime);
+					return endTime - initialTime;
 				}
 				else
 				{
@@ -75,6 +80,7 @@ public class HashTable
 				}
 			}
 		}
+		System.out.println("Data not found");
 
 		long endTime = System.nanoTime();
 		System.out.println("Initial nano secs: " + initialTime + " | End nano secs: " + endTime);

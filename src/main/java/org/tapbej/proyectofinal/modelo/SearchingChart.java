@@ -51,15 +51,15 @@ public class SearchingChart extends BarChart
 				{
 					//todo
 					Comparison comparison = comparisons.poll();
-					System.out.println("colorizing " + comparison.getBarIndex());
+					System.out.println("colorizing " + comparison.getItemIndex());
 
 					if (comparison.isSuccessful())
 					{
-						colorizeBar(comparison.getBarIndex(), "green");
+						colorizeBar(comparison.getItemIndex(), "green");
 					}
 					else
 					{
-						colorizeBar(comparison.getBarIndex(), "#000000ba");
+						colorizeBar(comparison.getItemIndex(), "#000000ba");
 					}
 				}
 				else
@@ -108,8 +108,6 @@ public class SearchingChart extends BarChart
 	public void colorizeBar(int position, String color)
 	{
 		Data<String, Number> bar = (Data<String, Number>) ((Series) this.getData().get(0)).getData().get(position);
-		System.out.println("Colorizing bar " + position + " (value: " + bar.getYValue() + ") to color " + color);
-
 		bar.getNode().setStyle("-fx-bar-fill: " + color + ";");
 	}
 

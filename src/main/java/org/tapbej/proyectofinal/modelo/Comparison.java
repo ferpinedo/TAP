@@ -3,20 +3,20 @@ package org.tapbej.proyectofinal.modelo;
 public class Comparison
 {
 	private boolean successful;
-	private int barIndex;
-
-	public Comparison(int nodeIndex, int bucket, boolean successful)
-	{
-		this.successful = successful;
-		this.barIndex = nodeIndex;
-		this.bucket = bucket;
-	}
-
+	private int itemIndex;
 	private int bucket;
+
+
+	public Comparison( int bucket, int nodeIndex, boolean successful)
+	{
+		this.bucket = bucket;
+		this.itemIndex = nodeIndex;
+		this.successful = successful;
+	}
 
 	public Comparison(int nodeIndex, boolean successful)
 	{
-		this.barIndex = nodeIndex;
+		this.itemIndex = nodeIndex;
 		this.successful = successful;
 	}
 
@@ -30,14 +30,14 @@ public class Comparison
 		this.successful = successful;
 	}
 
-	public int getBarIndex()
+	public int getItemIndex()
 	{
-		return barIndex;
+		return itemIndex;
 	}
 
-	public void setBarIndex(int barIndex)
+	public void setItemIndex(int itemIndex)
 	{
-		this.barIndex = barIndex;
+		this.itemIndex = itemIndex;
 	}
 
 	public int getBucket()

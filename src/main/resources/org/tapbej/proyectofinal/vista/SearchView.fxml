@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="anchorPaneChart" prefHeight="537.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tapbej.proyectofinal.controlador.SearchViewController">
    <children>
-      <HBox alignment="CENTER" prefHeight="120.0" prefWidth="832.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <HBox fx:id="hBoxSpecs" alignment="CENTER" prefHeight="120.0" prefWidth="832.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
             <VBox alignment="CENTER_RIGHT" prefHeight="112.0" prefWidth="130.0" spacing="10.0">
                <children>
@@ -82,17 +82,17 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox>
+            <VBox fx:id="vBoxHashSpecs">
                <children>
                   <HBox>
                      <children>
-                        <VBox fx:id="vBoxHashSpecs" alignment="CENTER_LEFT" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="166.0" spacing="10.0">
+                        <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="166.0" spacing="10.0">
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="9.0" prefWidth="358.0" spacing="30.0">
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="145.0" spacing="10.0">
                                        <children>
-                                          <TextField fx:id="txtInsert" prefHeight="25.0" prefWidth="80.0" />
+                                          <TextField fx:id="txtInsert" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="80.0" />
                                           <Button mnemonicParsing="false" onAction="#insertHash" prefWidth="60.0" text="Insertar" />
                                        </children>
                                     </HBox>
@@ -102,7 +102,7 @@
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="145.0" spacing="10.0">
                                        <children>
-                                          <TextField fx:id="txtDelete" prefHeight="25.0" prefWidth="80.0" />
+                                          <TextField fx:id="txtDelete" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="80.0" />
                                           <Button mnemonicParsing="false" onAction="#deleteHash" prefWidth="60.0" text="Borrar" />
                                        </children>
                                     </HBox>
@@ -112,7 +112,7 @@
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="145.0" spacing="10.0">
                                        <children>
-                                          <TextField fx:id="txtSearch" prefHeight="25.0" prefWidth="80.0" />
+                                          <TextField fx:id="txtSearch" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="80.0" />
                                           <Button mnemonicParsing="false" onAction="#searchHash" prefWidth="60.0" text="Buscar" />
                                        </children>
                                     </HBox>
@@ -154,45 +154,6 @@
             </HBox>
          </children>
       </HBox>
-      <HBox fx:id="hBoxHashView" alignment="BOTTOM_CENTER" layoutX="203.0" layoutY="245.0" prefHeight="185.0" prefWidth="407.0" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="170.0">
-         <children>
-            <VBox alignment="BOTTOM_CENTER">
-               <children>
-                  <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="84.0" style="-fx-border-color: gray;">
-                     <children>
-                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
-                           <children>
-                              <Label text="32" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
-                           <children>
-                              <Label text="32" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" layoutX="21.0" layoutY="102.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
-                           <children>
-                              <Label text="4" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" layoutX="21.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="62.0" style="-fx-border-color: orange;">
-                           <children>
-                              <Label text="4" />
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="10.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="84.0" style="-fx-border-color: red;">
-                     <children>
-                        <Label text="Label" />
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
+      <HBox fx:id="hBoxHashView" alignment="BOTTOM_CENTER" layoutX="203.0" layoutY="245.0" prefHeight="185.0" prefWidth="407.0" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="170.0" />
    </children>
 </AnchorPane>
