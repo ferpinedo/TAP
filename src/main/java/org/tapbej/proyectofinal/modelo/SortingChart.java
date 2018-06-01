@@ -22,6 +22,8 @@ public class SortingChart extends BarChart
 	private String defaultColor = "#000000";
 	private String finishColor = "blue";
 
+	private boolean stop = false;
+
 	private int cursorBar = 0;
 
 	public SortingChart()
@@ -59,6 +61,11 @@ public class SortingChart extends BarChart
 		{
 			try
 			{
+				if (stop)
+				{
+					timeline.stop();
+				}
+
 				if (movements.size() != 0)
 				{
 					Movement movement = movements.pollFirst();
@@ -174,12 +181,17 @@ public class SortingChart extends BarChart
 		for (Bar bar : bars)
 		{
 			final Data<String, Number> chartBar = (Data<String, Number>) ((Series) this.getData().get(0)).getData().get(position);
-			System.out.println("Colorizing bar " + position + " (value: " + chartBar.getYValue() + ") to defaultColor " + bar.getColor());
+//			System.out.println("Colorizing bar " + position + " (value: " + chartBar.getYValue() + ") to defaultColor " + bar.getColor());
 			chartBar.getNode().setStyle("-fx-bar-fill: " + bar.getColor() + ";");
 			position++;
 		}
-		System.out.println("Bars: ");
+//		System.out.println("Bars: ");
 //		System.out.println(barsToString());
+	}
+
+	public void stopSorting()
+	{
+		stop = true;
 	}
 
 	/**
