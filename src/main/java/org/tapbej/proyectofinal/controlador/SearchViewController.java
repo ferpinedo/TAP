@@ -27,6 +27,9 @@ public class SearchViewController extends Controller
 	private TextField txtTarget;
 
 	@FXML
+	private TextField txtInterval;
+
+	@FXML
 	private TextField txtPercentage;
 
 
@@ -194,7 +197,8 @@ public class SearchViewController extends Controller
 			paintSetup(0);
 		}
 
-		int interval = 20;
+
+		int interval = Integer.parseInt(txtInterval.getText());
 
 		searchingChart.search(interval);
 	}
