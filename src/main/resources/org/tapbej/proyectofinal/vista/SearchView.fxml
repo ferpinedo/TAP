@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -16,6 +18,11 @@
    <children>
       <HBox fx:id="hBoxSpecs" alignment="CENTER" prefHeight="120.0" prefWidth="832.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
+            <Label fx:id="lblHashTime">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
             <VBox alignment="CENTER_RIGHT" prefHeight="112.0" prefWidth="130.0" spacing="10.0">
                <children>
                   <VBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="130.0" spacing="3.0">
@@ -126,7 +133,6 @@
             </VBox>
          </children>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#handleBack" text="Regresar" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
       <Label alignment="CENTER" layoutX="345.0" layoutY="9.0" prefHeight="43.0" prefWidth="240.0" text="Búsqueda" textAlignment="CENTER" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font name="Roboto Medium" size="30.0" />
@@ -152,8 +158,23 @@
                   <Label text="No visitado" />
                </children>
             </HBox>
+            <HBox alignment="CENTER" layoutX="436.0" layoutY="10.0" prefWidth="120.0" spacing="5.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="15.0" stroke="#ff000000" strokeType="INSIDE" width="15.0" />
+                  <Label text="Encontrado" />
+               </children>
+            </HBox>
          </children>
       </HBox>
       <HBox fx:id="hBoxHashView" alignment="BOTTOM_CENTER" layoutX="203.0" layoutY="245.0" prefHeight="185.0" prefWidth="407.0" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="170.0" />
+      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBack" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0">
+               <image>
+                  <Image url="@../iconos/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

@@ -126,7 +126,7 @@ public class SearchingChart extends BarChart
 	 */
 	public void setTimePassed(double timePassed)
 	{
-		this.setTitle(timePassed + "s");
+		this.setTitle(timePassed + " microsegundos");
 	}
 
 	/**

@@ -72,7 +72,12 @@ public class SearchViewController extends Controller
 	@FXML
 	private TextField txtSearch;
 
+	@FXML
+	private Label lblHashTime;
+
 	private HashTable hashTable;
+
+
 	Animation hashAnimation = null;
 
 
@@ -279,12 +284,14 @@ public class SearchViewController extends Controller
 
 		hBoxHashView.setVisible(false);
 		AnchorPane.setRightAnchor(hBoxHashView, null);
+		lblHashTime.setVisible(false);
 		// setFreeWidth(hBoxHashView, 300);// maybe unnecessary
 
 
 		// show the hash things
-//		hBoxSpecs.getChildren().remove(hBoxSpecs.getChildren().size() - 2);
-//		hBoxSpecs.getChildren().add(Object.clone(vBoxNotHashSpecs));
+		//		hBoxSpecs.getChildren().remove(hBoxSpecs.getChildren().size() - 2);
+		//		hBoxSpecs.getChildren().add(Object.clone(vBoxNotHashSpecs));
+		txtInterval.setText("50");
 		vBoxNotHashSpecs.setVisible(true);
 		setFreeWidth(vBoxNotHashSpecs, 330);
 
@@ -298,9 +305,7 @@ public class SearchViewController extends Controller
 
 
 
-
-
-	/*  HASH TABLE SECTION */
+	/* HASH TABLE SECTION */
 
 
 	private void switchToHash()
@@ -311,13 +316,14 @@ public class SearchViewController extends Controller
 
 		searchingChart.setVisible(false);
 		setFreeWidth(searchingChart, 0);
-
+		lblHashTime.setVisible(true);
 		hBoxLegend.setVisible(false);
 
 
 		// show the hash things
-//		hBoxSpecs.getChildren().remove(hBoxSpecs.getChildren().size() - 2);
-//		hBoxSpecs.getChildren().add(vBoxHashSpecs);
+		//		hBoxSpecs.getChildren().remove(hBoxSpecs.getChildren().size() - 2);
+		//		hBoxSpecs.getChildren().add(vBoxHashSpecs);
+		txtInterval.setText("500 microsegundos");
 		vBoxHashSpecs.setVisible(true);
 		setFreeWidth(vBoxHashSpecs, 190);
 		hBoxHashView.setVisible(true);
@@ -355,7 +361,7 @@ public class SearchViewController extends Controller
 		paintSetup();
 		hashTable.setTarget(Integer.parseInt(txtSearch.getText()));
 		double timePassed = hashTable.search() / 1000;
-//				setTimePassed(timePassed);
+		lblHashTime.setText(timePassed+"");
 
 		Deque<Comparison> comparisons = hashTable.getComparisons();
 
@@ -372,11 +378,13 @@ public class SearchViewController extends Controller
 					if (comparison.isSuccessful())
 					{
 						colorizeItem(comparison.getBucket(), comparison.getItemIndex(), "green");
-					} else
-					{
-						colorizeItem(comparison.getBucket(), comparison.getItemIndex(), "red");
 					}
-				} else
+					else
+					{
+						colorizeItem(comparison.getBucket(), comparison.getItemIndex(), "gray");
+					}
+				}
+				else
 				{
 					hashAnimation.stop();
 				}
