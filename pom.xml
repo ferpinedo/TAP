@@ -4,6 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <groupId>org.tapbej</groupId>
     <artifactId>tap</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -42,7 +46,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.makers.traceability.Main</mainClass>
+                            <mainClass>org.tapbej.proyectofinal.Main</mainClass>
                             <classpathPrefix>dependency-jars/</classpathPrefix>
                         </manifest>
                     </archive>
@@ -76,7 +80,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.makers.traceability.Main</mainClass>
+                            <mainClass>org.tapbej.proyectofinal.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
