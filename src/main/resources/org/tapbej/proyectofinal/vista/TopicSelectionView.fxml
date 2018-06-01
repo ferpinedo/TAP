@@ -49,9 +49,9 @@
                   </ImageView>
                   <AnchorPane prefHeight="119.0" prefWidth="327.0">
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" layoutX="31.0" prefHeight="111.0" prefWidth="265.0" style="-fx-border-color: transparent; -fx-background-color: transparent; -fx-border-width: 0;" vbarPolicy="NEVER">
+                        <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="31.0" pannable="true" prefHeight="111.0" prefWidth="273.0" style="-fx-border-color: transparent; -fx-background-color: transparent; -fx-border-width: 0;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
                            <content>
-                              <Label fx:id="lblDescription" alignment="TOP_LEFT" prefHeight="248.0" prefWidth="264.0" style="-fx-background-color: transparent;" text="Label" textAlignment="JUSTIFY" wrapText="true">
+                              <Label fx:id="lblDescription" alignment="TOP_LEFT" prefHeight="248.0" prefWidth="251.0" style="-fx-background-color: transparent;" text="Label" textAlignment="JUSTIFY" wrapText="true">
                                  <font>
                                     <Font name="Microsoft JhengHei UI" size="14.0" />
                                  </font>
