@@ -38,6 +38,12 @@ public class SearchingChart extends BarChart
 	// TODO: java doc & tracking
 	public void search(int interval)
 	{
+
+		if (animation != null)
+		{
+			animation.stop();
+		}
+
 		double timePassed = searcher.search() / 1000;
 		setTimePassed(timePassed);
 
