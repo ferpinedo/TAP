@@ -1,0 +1,1 @@
+javapackager -deploy -native -outdir packages -outfile TAP -srcdir target -srcfiles tap-1.0.jar -appclass org.tapbej.proyectofinal.Main -name "TAP" -title "Tópicos Avanzados de Programación" -vendor "Pinedo & Vilchis Organization" -Bicon=src\main\resources\org\tapbej\proyectofinal\iconos\algorithm.ico
