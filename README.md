@@ -4,4 +4,3 @@ conformado por los estudiantes:
 
 * Alejandro Alberto Ramírez Vilchis
 * Fernando Josué Pinedo Orta
-* Jesús Orlando Alvarado Pérez

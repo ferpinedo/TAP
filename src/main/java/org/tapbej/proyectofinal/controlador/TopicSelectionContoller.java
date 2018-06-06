@@ -32,7 +32,7 @@ public class TopicSelectionContoller extends Controller
 	private ScrollPane scrollPane;
 
 	private final String INTRO_TEXT = "TAP (Tópicos Avanzados de Programación) es un proyecto que consiste en la representación y demostración de algoritmos avanzados de programación." +
-			  "\n\nAutores: \n  - Alejandro Alberto Ramírez Vilchis\n  - Fernando Josué Pinedo Orta\n  - Jesús Orlando Alvarado Pérez" +
+			  "\n\nAutores: \n  - Alejandro Alberto Ramírez Vilchis\n  - Fernando Josué Pinedo Orta" +
 			  "\n\nMayo, 2018";
 	private final String RECURSION_TEXT = "La recursividad se refiere al proceso que se define en términos de uno mismo. Selecciona esta opción si deseas jugar y observar el funcionamiento de la recursividad.";
 	private final String SORTING_TEXT = "Ordenamiento consiste en permutar valores de manera que se acomoden de menor valor a mayor (ascendentemente)."; //Elige esta opción para comparar y entender mejor los distintos métodos de ordenamiento.";
