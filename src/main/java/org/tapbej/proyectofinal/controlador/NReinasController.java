@@ -646,7 +646,7 @@ public class NReinasController extends Controller
 	@Override
 	void setDefaultCloseOperation()
 	{
-
+		mainApp.getSecondaryStage().setResizable(true);
 	}
 
 	@Override
