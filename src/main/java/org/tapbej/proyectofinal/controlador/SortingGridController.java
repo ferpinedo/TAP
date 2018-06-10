@@ -1,11 +1,18 @@
 package org.tapbej.proyectofinal.controlador;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.tapbej.proyectofinal.modelo.GeneradorDatos;
 import org.tapbej.proyectofinal.modelo.SortMethod;
 import org.tapbej.proyectofinal.modelo.SortingChart;
+
+import java.util.Iterator;
 
 
 public class SortingGridController extends Controller
@@ -21,9 +28,6 @@ public class SortingGridController extends Controller
 
 	@FXML
 	private TextField txtSortedPercentage;
-
-	@FXML
-	private Button btnBack;
 
 	@FXML
 	private Label lblSelectionSort;
@@ -53,15 +57,14 @@ public class SortingGridController extends Controller
 	private Label lblMixedCase;
 
 
-	private SortingChart[] sortingChartsSelectionSort;
-	private SortingChart[] sortingChartsBubbleSort;
-	private SortingChart[] sortingChartsShakerSort;
-	private SortingChart[] sortingChartsInsertionSort;
-	private SortingChart[] sortingChartsQuickSort;
-
+	private SortingChart[][] sortingCharts;
+	int[][] cases;
+	SortMethod[] sortMethods = {SortMethod.SELECTION_SORT, SortMethod.BUBBLE_SORT,
+			  							 SortMethod.SHAKER_SORT, SortMethod.INSERTION_SORT, SortMethod.QUICK_SORT};
 	private int interval;
 	private int size;
 	private int percent;
+
 
 	@Override
 	void setKeyListener()
@@ -88,36 +91,36 @@ public class SortingGridController extends Controller
 	@Override
 	void setDefaultCloseOperation()
 	{
-		stopSorting();
+		mainApp.getPrimaryStage().setOnCloseRequest(e -> stopSorting());
 	}
 
 	@Override
 	void runSpecificOperations()
 	{
-		lblBestCase.setTooltip(new Tooltip("Genera un arreglo de enteros ordenados\n" +
-				  											"de forma ascendente"));
-		lblWorstCase.setTooltip(new Tooltip("Genera un arreglo de enteros ordenados\n" +
-				  												"de forma descentende"));
-		lblRandomCase.setTooltip(new Tooltip("Genera un arreglo de enteros ordenados\n" +
-				  "    * de forma pseudorandom. Los elementos pueden repetirse\n" +
-				  "    * pero no salirse del límite especificado"));
-		lblMixedCase.setTooltip(new Tooltip("Genera un arreglo de enteros con un " +
-				  												"porcentaje de ellos ordenado y otro con " +
-				  												"\nelementos pseudorandom"));
+		lblBestCase.setTooltip(new Tooltip("Arreglo de enteros ordenados\n" +
+				  											 "de forma ascendente"));
+		lblWorstCase.setTooltip(new Tooltip("Arreglo de enteros ordenados\n" +
+															  "de forma descentende"));
+		lblRandomCase.setTooltip(new Tooltip("Arreglo de enteros ordenados\n" +
+															  "de forma pseudorandom. Los elementos pueden repetirse\n" +
+															  "pero no salirse del límite especificado"));
+		lblMixedCase.setTooltip(new Tooltip("Genera un arreglo de enteros con un porcentaje de ellos ordenado y otro con " +
+															  "\nelementos pseudorandom"));
 
 		lblSelectionSort.setTooltip(new Tooltip("Encuentra el valor menor de la parte " +
-				  													"\nposiblemente no ordenada y lo intercambia " +
-				  													"\ncon la primera posición de dicha parte."));
+																  "\nposiblemente no ordenada y lo intercambia " +
+																  "\ncon la primera posición de dicha parte."));
 		lblBubbleSort.setTooltip(new Tooltip("Compara valores adyaccentes y los intercambia " +
-				  												"\nsi no están ordenados correctamente"));
+															  "\nsi no están ordenados correctamente"));
 		lblInsertionSort.setTooltip(new Tooltip("Se inserta elemento por elmento en su posición " +
-				  													"\ncorrecta. También conocido como \"Baraja\""));
+																  "\ncorrecta. También conocido como \"Baraja\""));
 		lblShakerSort.setTooltip(new Tooltip("Compara valores adyaccentes y los intercambia si no " +
 															  "\nestán ordenados correctamente, yendo de un" +
 															  "\nextremo a otro y viceversa hasta terminar de ordenarlos."));
 		lblQuickSort.setTooltip(new Tooltip("Es un algoritmo basado en la técnica de divide y vencerás, " +
-				  												"\nque permite, en promedio, ordenar n elementos en un tiempo " +
-				  												"\nproporcional a n log n. "));
+															  "\nque permite, en promedio, ordenar n elementos en un tiempo " +
+															  "\nproporcional a n log n. "));
+		drawCharts();
 	}
 
 	@FXML
@@ -126,7 +129,7 @@ public class SortingGridController extends Controller
 		interval = Integer.parseInt(txtMillis.getText());
 		size = Integer.parseInt(txtDataQuantity.getText());
 		percent = Integer.parseInt(txtSortedPercentage.getText());
-		drawCharts();
+		Platform.runLater(this::drawCharts);
 	}
 
 	@FXML
@@ -135,108 +138,45 @@ public class SortingGridController extends Controller
 		interval = Integer.parseInt(txtMillis.getText());
 		size = Integer.parseInt(txtDataQuantity.getText());
 		percent = Integer.parseInt(txtSortedPercentage.getText());
-		drawCharts();
 	}
 
 	public void drawCharts()
 	{
+		System.out.println("Drawing charts");
+		cases = new int[4][size];
+		cases[0] = GeneradorDatos.mejorCaso(size);
+		cases[1] = GeneradorDatos.peorCaso(size);
+		cases[2] = GeneradorDatos.casoPromedio(size);
+		cases[3] = GeneradorDatos.casoMixto(size, percent);
 
-		int[] dataBestCase = GeneradorDatos.mejorCaso(size);
-		int[] dataWorstCase = GeneradorDatos.peorCaso(size);
-		int[] dataRandomCase = GeneradorDatos.casoPromedio(size);
-		int[] dataMixedCase = GeneradorDatos.casoMixto(size, percent);
+		/* [method][case] */
+		sortingCharts = new SortingChart[sortMethods.length][cases.length];
 
-		int rowBestCase = 1;
-		int rowWorstCase = 2;
-		int rowMixedCase = 3;
-		int rowRandomCase = 4;
+		for (int i = 0; i < sortMethods.length; i++)
+		{
+			for (int j = 0; j < cases.length; j++)
+			{
+				sortingCharts[i][j] = new SortingChart(cases[j], sortMethods[i]);
+				AnchorPane anchorPane = new AnchorPane();
+				gridPane.add(anchorPane, i + 1, j + 1);
 
-		int columnSelectionSort = 1;
-		int columnBubbleSort = 2;
-		int columnShakerSort = 3;
-		int columnInsertionSort = 4;
-		int columnQuickSort = 5;
+				if (!mainApp.getSecondaryStage().isMaximized() && !mainApp.getSecondaryStage().isFullScreen())
+				{
+					sortingCharts[i][j].setPrefHeight(107.0);
+					sortingCharts[i][j].setPrefWidth(167.0);
+					sortingCharts[i][j].setMinHeight(107.0);
+					sortingCharts[i][j].setMinWidth(167.0);
+				}
 
+				anchorPane.getChildren().add(sortingCharts[i][j]);
 
-		// Selection sort
-		sortingChartsSelectionSort = new SortingChart[4];
+				AnchorPane.setTopAnchor(sortingCharts[i][j], 0.0);
+				AnchorPane.setBottomAnchor(sortingCharts[i][j], 0.0);
+				AnchorPane.setLeftAnchor(sortingCharts[i][j], 0.0);
+				AnchorPane.setRightAnchor(sortingCharts[i][j], 0.0);
 
-		sortingChartsSelectionSort[0] = new SortingChart(dataBestCase, SortMethod.SELECTION_SORT);
-		gridPane.add(sortingChartsSelectionSort[0], columnSelectionSort, rowBestCase);
-
-		sortingChartsSelectionSort[1] = new SortingChart(dataWorstCase, SortMethod.SELECTION_SORT);
-		gridPane.add(sortingChartsSelectionSort[1], columnSelectionSort, rowWorstCase);
-
-		sortingChartsSelectionSort[2] = new SortingChart(dataRandomCase, SortMethod.SELECTION_SORT);
-		gridPane.add(sortingChartsSelectionSort[2], columnSelectionSort, rowRandomCase);
-
-		sortingChartsSelectionSort[3] = new SortingChart(dataMixedCase, SortMethod.SELECTION_SORT);
-		gridPane.add(sortingChartsSelectionSort[3], columnSelectionSort, rowMixedCase);
-
-
-		// Bubble sort
-		sortingChartsBubbleSort = new SortingChart[4];
-
-		sortingChartsBubbleSort[0] = new SortingChart(dataBestCase, SortMethod.BUBBLE_SORT);
-		gridPane.add(sortingChartsBubbleSort[0], columnBubbleSort, rowBestCase);
-
-		sortingChartsBubbleSort[1] = new SortingChart(dataWorstCase, SortMethod.BUBBLE_SORT);
-		gridPane.add(sortingChartsBubbleSort[1], columnBubbleSort, rowWorstCase);
-
-		sortingChartsBubbleSort[2] = new SortingChart(dataRandomCase, SortMethod.BUBBLE_SORT);
-		gridPane.add(sortingChartsBubbleSort[2], columnBubbleSort, rowRandomCase);
-
-		sortingChartsBubbleSort[3] = new SortingChart(dataMixedCase, SortMethod.BUBBLE_SORT);
-		gridPane.add(sortingChartsBubbleSort[3], columnBubbleSort, rowMixedCase);
-
-
-
-		// Shaker sort
-		sortingChartsShakerSort = new SortingChart[4];
-
-		sortingChartsShakerSort[0] = new SortingChart(dataBestCase, SortMethod.SHAKER_SORT);
-		gridPane.add(sortingChartsShakerSort[0], columnShakerSort, rowBestCase);
-
-		sortingChartsShakerSort[1] = new SortingChart(dataWorstCase, SortMethod.SHAKER_SORT);
-		gridPane.add(sortingChartsShakerSort[1], columnShakerSort, rowWorstCase);
-
-		sortingChartsShakerSort[2] = new SortingChart(dataRandomCase, SortMethod.SHAKER_SORT);
-		gridPane.add(sortingChartsShakerSort[2], columnShakerSort, rowRandomCase);
-
-		sortingChartsShakerSort[3] = new SortingChart(dataMixedCase, SortMethod.SHAKER_SORT);
-		gridPane.add(sortingChartsShakerSort[3], columnShakerSort, rowMixedCase);
-
-
-		// Insertion sort
-		sortingChartsInsertionSort = new SortingChart[4];
-
-		sortingChartsInsertionSort[0] = new SortingChart(dataBestCase, SortMethod.INSERTION_SORT);
-		gridPane.add(sortingChartsInsertionSort[0], columnInsertionSort, rowBestCase);
-
-		sortingChartsInsertionSort[1] = new SortingChart(dataWorstCase, SortMethod.INSERTION_SORT);
-		gridPane.add(sortingChartsInsertionSort[1], columnInsertionSort, rowWorstCase);
-
-		sortingChartsInsertionSort[2] = new SortingChart(dataRandomCase, SortMethod.INSERTION_SORT);
-		gridPane.add(sortingChartsInsertionSort[2], columnInsertionSort, rowRandomCase);
-
-		sortingChartsInsertionSort[3] = new SortingChart(dataMixedCase, SortMethod.INSERTION_SORT);
-		gridPane.add(sortingChartsInsertionSort[3], columnInsertionSort, rowMixedCase);
-
-		// Quick sort
-		sortingChartsQuickSort = new SortingChart[4];
-
-		sortingChartsQuickSort[0] = new SortingChart(dataBestCase, SortMethod.QUICK_SORT);
-		gridPane.add(sortingChartsQuickSort[0], columnQuickSort, rowBestCase);
-
-		sortingChartsQuickSort[1] = new SortingChart(dataWorstCase, SortMethod.QUICK_SORT);
-		gridPane.add(sortingChartsQuickSort[1], columnQuickSort, rowWorstCase);
-
-		sortingChartsQuickSort[2] = new SortingChart(dataRandomCase, SortMethod.QUICK_SORT);
-		gridPane.add(sortingChartsQuickSort[2], columnQuickSort, rowRandomCase);
-
-		sortingChartsQuickSort[3] = new SortingChart(dataMixedCase, SortMethod.QUICK_SORT);
-		gridPane.add(sortingChartsQuickSort[3], columnQuickSort, rowMixedCase);
-
+			}
+		}
 	}
 
 	public void handleBack()
@@ -248,47 +188,56 @@ public class SortingGridController extends Controller
 
 	public void handleSort()
 	{
-		stopSorting();
-
+		clearCharts();
 		interval = Integer.parseInt(txtMillis.getText());
 		size = Integer.parseInt(txtDataQuantity.getText());
 		percent = Integer.parseInt(txtSortedPercentage.getText());
 		drawCharts();
 		System.out.println("New size: " + size);
 
-		for (SortingChart sortingChart: sortingChartsSelectionSort)
-			sortingChart.sort(interval);
 
-		for (SortingChart sortingChart: sortingChartsBubbleSort)
-			sortingChart.sort(interval);
-
-		for (SortingChart sortingChart: sortingChartsShakerSort)
-			sortingChart.sort(interval);
-
-		for (SortingChart sortingChart: sortingChartsInsertionSort)
-			sortingChart.sort(interval);
-
-		for (SortingChart sortingChart: sortingChartsQuickSort)
-			sortingChart.sort(interval);
+		for (int i = 1; i < sortMethods.length + 1; i++)
+		{
+			for (int j = 1; j < cases.length + 1; j++)
+			{
+				((SortingChart) getNodeFromGridPane(gridPane, i, j)).sort(interval);
+			}
+		}
 	}
 
 	public void stopSorting()
 	{
-		for (SortingChart sortingChart: sortingChartsSelectionSort)
-			sortingChart.stopSorting();
+		for (int i = 1; i < sortMethods.length + 1; i++)
+		{
+			for (int j = 1; j < cases.length + 1; j++)
+			{
+				((SortingChart) getNodeFromGridPane(gridPane, i, j)).stopSorting();
+			}
+		}
+	}
 
-		for (SortingChart sortingChart: sortingChartsBubbleSort)
-			sortingChart.stopSorting();
+	private void clearCharts()
+	{
+		Iterator<Node> nodeIterator = gridPane.getChildren().iterator();
+		while(nodeIterator.hasNext())
+		{
+			Node chart = nodeIterator.next();
+			if (GridPane.getColumnIndex(chart) != null && GridPane.getRowIndex(chart) != null)
+				if (GridPane.getColumnIndex(chart) != 0 && GridPane.getRowIndex(chart) != 0)
+					nodeIterator.remove();
+		}
+	}
 
-		for (SortingChart sortingChart: sortingChartsShakerSort)
-			sortingChart.stopSorting();
 
-		for (SortingChart sortingChart: sortingChartsInsertionSort)
-			sortingChart.stopSorting();
-
-		for (SortingChart sortingChart: sortingChartsQuickSort)
-			sortingChart.stopSorting();
+	private Node getNodeFromGridPane(GridPane gridPane, int col, int row)
+	{
+		for (Node node : gridPane.getChildren())
+			if (GridPane.getColumnIndex(node) != null && GridPane.getRowIndex(node) != null)
+				if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row)
+					return ((AnchorPane)node).getChildren().get(0);
+		return null;
 	}
 
 
 }
+
