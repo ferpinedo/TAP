@@ -110,11 +110,11 @@ public class SortingGridController extends Controller
 		lblSelectionSort.setTooltip(new Tooltip("Encuentra el valor menor de la parte " +
 																  "\nposiblemente no ordenada y lo intercambia " +
 																  "\ncon la primera posición de dicha parte."));
-		lblBubbleSort.setTooltip(new Tooltip("Compara valores adyaccentes y los intercambia " +
+		lblBubbleSort.setTooltip(new Tooltip("Compara valores adyacentes y los intercambia " +
 															  "\nsi no están ordenados correctamente"));
 		lblInsertionSort.setTooltip(new Tooltip("Se inserta elemento por elmento en su posición " +
 																  "\ncorrecta. También conocido como \"Baraja\""));
-		lblShakerSort.setTooltip(new Tooltip("Compara valores adyaccentes y los intercambia si no " +
+		lblShakerSort.setTooltip(new Tooltip("Compara valores adyacentes y los intercambia si no " +
 															  "\nestán ordenados correctamente, yendo de un" +
 															  "\nextremo a otro y viceversa hasta terminar de ordenarlos."));
 		lblQuickSort.setTooltip(new Tooltip("Es un algoritmo basado en la técnica de divide y vencerás, " +

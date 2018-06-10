@@ -106,7 +106,7 @@ public class Sorter
 
 	/**
 	 * Ordena de manera ascendente un arreglo de números enteros.
-	 * Compara valores adyaccentes y los intercambia si no están ordenados correctamente
+	 * Compara valores adyacentes y los intercambia si no están ordenados correctamente
 	 * También llamado "Bubble search"
 	 *
 	 * @param data arreglo de enteros a ordenar
@@ -150,7 +150,7 @@ public class Sorter
 
 	/**
 	 * Ordena de manera ascendente un arreglo de números enteros.
-	 * Compara valores adyaccentes y los intercambia si no están ordenados correctamente, yendo de un extremo a otro y
+	 * Compara valores adyacentes y los intercambia si no están ordenados correctamente, yendo de un extremo a otro y
 	 * viceversa hasta terminar de ordenarlos.
 	 * También llamado "Burbuja bidireccional"
 	 *

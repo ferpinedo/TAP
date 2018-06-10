@@ -92,7 +92,9 @@ public class Main extends Application
 			Controller controller = loader.getController();
 			controller.start(this);
 
-//			secondaryStage.setMaximized(true);
+			//			secondaryStage.setMaximized(true);
+
+			secondaryStage.setResizable(true);
 			secondaryStage.setScene(new Scene(ventana));
 			secondaryStage.show();
 			secondaryStage.centerOnScreen();
@@ -116,6 +118,7 @@ public class Main extends Application
 			Controller controller = loader.getController();
 			controller.start(this);
 
+			secondaryStage.setResizable(true);
 			secondaryStage.setScene(new Scene(ventana));
 			secondaryStage.show();
 			secondaryStage.centerOnScreen();
@@ -140,7 +143,7 @@ public class Main extends Application
 			AnchorPane ventana = loader.load();
 
 			secondaryStage.setResizable(false);
-
+			secondaryStage.setMaximized(false);
 			secondaryStage.setScene(new Scene(ventana));
 			secondaryStage.show();
 			secondaryStage.centerOnScreen();
@@ -166,7 +169,7 @@ public class Main extends Application
 			controller.start(this);
 
 			secondaryStage.setResizable(false);
-
+			secondaryStage.setMaximized(false);
 			secondaryStage.setScene(new Scene(ventana));
 			secondaryStage.show();
 			secondaryStage.centerOnScreen();
