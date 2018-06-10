@@ -1,1 +1,3 @@
-javapackager -deploy -native -outdir packages -outfile TAP -srcdir target -srcfiles tap-1.0.jar -appclass org.tapbej.proyectofinal.Main -name "TAP" -title "Tópicos Avanzados de Programación" -vendor "Pinedo & Vilchis Organization" -Bicon=src\main\resources\org\tapbej\proyectofinal\iconos\algorithm.ico
+javapackager -deploy -native -outdir packages -outfile TAP -srcdir target -srcfiles tap-1.0.jar -appclass org.tapbej.proyectofinal.Main -name "TAP" -title "TÃ³picos Avanzados de ProgramaciÃ³n" -vendor "Pinedo & Vilchis Organization" -Bicon=src\main\resources\org\tapbej\proyectofinal\iconos\algorithm.ico
+
+Agregar flag: -BsystemWide=true para instalar en ProgramFiles en lugar de AppData 
