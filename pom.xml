@@ -10,7 +10,7 @@
 
     <groupId>org.tapbej</groupId>
     <artifactId>tap</artifactId>
-    <version>1.0</version>
+    <version>1.3</version>
     <build>
         <plugins>
             <!-- download source code in Eclipse, best practice -->
