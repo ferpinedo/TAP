@@ -44,6 +44,9 @@ public class Main extends Application
          loader.setLocation(Main.class.getResource("vista/TopicSelectionView.fxml"));
          AnchorPane ventana = loader.load();
 
+			// TODO: make it responsive
+			primaryStage.setResizable(false);
+
          primaryStage.setScene(new Scene(ventana));
          primaryStage.show();
          Controller controller = loader.getController();
@@ -86,11 +89,14 @@ public class Main extends Application
 			loader.setLocation(Main.class.getResource("vista/SortingGridView.fxml"));
 			AnchorPane ventana = loader.load();
 
-			secondaryStage.setScene(new Scene(ventana));
-			secondaryStage.setMaximized(true);
-			secondaryStage.show();
 			Controller controller = loader.getController();
 			controller.start(this);
+
+			secondaryStage.setMaximized(true);
+			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.show();
+			secondaryStage.centerOnScreen();
+			secondaryStage.setTitle("Ordenamiento");
 
 		}
 		catch (IOException e)
@@ -107,10 +113,14 @@ public class Main extends Application
 			loader.setLocation(Main.class.getResource("vista/SearchView.fxml"));
 			AnchorPane ventana = loader.load();
 
-			secondaryStage.setScene(new Scene(ventana));
-			secondaryStage.show();
 			Controller controller = loader.getController();
 			controller.start(this);
+
+			secondaryStage.setScene(new Scene(ventana));
+			secondaryStage.show();
+			secondaryStage.centerOnScreen();
+			secondaryStage.setTitle("Búsqueda");
+
 
 		}
 		catch (IOException e)
@@ -128,8 +138,12 @@ public class Main extends Application
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("vista/TorresHanoiView.fxml"));
 			AnchorPane ventana = loader.load();
+
+			secondaryStage.setResizable(false);
+
 			secondaryStage.setScene(new Scene(ventana));
 			secondaryStage.show();
+			secondaryStage.centerOnScreen();
 			secondaryStage.setTitle("Torres de Hanói");
 		}
 		catch (IOException e)
@@ -148,9 +162,10 @@ public class Main extends Application
 			loader.setLocation(Main.class.getResource("vista/NReinasView.fxml"));
 			AnchorPane ventana = loader.load();
 
-			Controller controlador = loader.getController();
-			controlador.start(this);
+			Controller controller = loader.getController();
+			controller.start(this);
 
+			secondaryStage.setResizable(false);
 
 			secondaryStage.setScene(new Scene(ventana));
 			secondaryStage.show();
