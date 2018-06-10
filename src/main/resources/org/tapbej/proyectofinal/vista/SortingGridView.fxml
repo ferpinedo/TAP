@@ -38,15 +38,15 @@
          <children>
             <AnchorPane GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="lblBestCase" alignment="CENTER" layoutX="47.0" layoutY="38.0" style="-fx-background-color: #757575; -fx-border-color: #000000;" text="Mejor Caso" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label fx:id="lblBestCase" alignment="CENTER" layoutX="47.0" layoutY="38.0" text="Mejor Caso" textAlignment="CENTER" textFill="#595959" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="Microsoft JhengHei UI" size="15.0" />
+                        <Font name="Microsoft JhengHei UI Bold" size="15.0" />
                      </font></Label>
                </children>
             </AnchorPane>
             <AnchorPane>
                <children>
-                  <Label alignment="CENTER" layoutX="47.0" layoutY="38.0" style="-fx-background-color: #757575; -fx-border-color: #000000;" text="Datos generados" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label alignment="CENTER" layoutX="47.0" layoutY="38.0" style="-fx-background-color: #a7a7a7;" text="Datos generados" textAlignment="CENTER" textFill="#393939" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font name="Microsoft JhengHei UI Bold" size="15.0" />
                      </font></Label>
@@ -54,25 +54,25 @@
             </AnchorPane>
             <AnchorPane GridPane.rowIndex="2">
                <children>
-                  <Label fx:id="lblWorstCase" alignment="CENTER" layoutX="47.0" layoutY="38.0" style="-fx-background-color: #757575; -fx-border-color: #000000;" text="Peor Caso" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label fx:id="lblWorstCase" alignment="CENTER" layoutX="47.0" layoutY="38.0" text="Peor Caso" textAlignment="CENTER" textFill="#595959" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="Microsoft JhengHei UI" size="15.0" />
+                        <Font name="Microsoft JhengHei UI Bold" size="15.0" />
                      </font></Label>
                </children>
             </AnchorPane>
             <AnchorPane GridPane.rowIndex="3">
                <children>
-                  <Label fx:id="lblMixedCase" alignment="CENTER" layoutX="47.0" layoutY="38.0" style="-fx-background-color: #757575; -fx-border-color: #000000;" text="Caso Mixto" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label fx:id="lblMixedCase" alignment="CENTER" layoutX="47.0" layoutY="38.0" text="Caso Mixto" textAlignment="CENTER" textFill="#595959" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="Microsoft JhengHei UI" size="15.0" />
+                        <Font name="Microsoft JhengHei UI Bold" size="15.0" />
                      </font></Label>
                </children>
             </AnchorPane>
             <AnchorPane GridPane.rowIndex="4">
                <children>
-                  <Label fx:id="lblRandomCase" alignment="CENTER" layoutX="47.0" layoutY="38.0" style="-fx-background-color: #757575; -fx-border-color: #000000;" text="Caso Aleatorio" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label fx:id="lblRandomCase" alignment="CENTER" layoutX="47.0" layoutY="38.0" text="Caso Aleatorio" textAlignment="CENTER" textFill="#595959" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="Microsoft JhengHei UI" size="15.0" />
+                        <Font name="Microsoft JhengHei UI Bold" size="15.0" />
                      </font></Label>
                </children>
             </AnchorPane>
@@ -127,7 +127,7 @@
                         <Font name="Microsoft JhengHei UI" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtDataQuantity" onInputMethodTextChanged="#handleTextChanged" prefHeight="30.0" prefWidth="77.0" text="50">
+                  <TextField fx:id="txtDataQuantity" onInputMethodTextChanged="#handleTextChanged" prefHeight="30.0" prefWidth="77.0" text="25">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -141,7 +141,7 @@
                         <Font name="Microsoft JhengHei UI" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtMillis" onInputMethodTextChanged="#handleTextChanged" prefHeight="30.0" prefWidth="84.0" promptText="En milisegundos" text="100">
+                  <TextField fx:id="txtMillis" onInputMethodTextChanged="#handleTextChanged" prefHeight="30.0" prefWidth="84.0" promptText="En milisegundos" text="300">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -160,7 +160,7 @@
                         <Font name="Microsoft JhengHei UI" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtSortedPercentage" onInputMethodTextChanged="#handleTextChanged" prefHeight="30.0" prefWidth="48.0" text="50">
+                  <TextField fx:id="txtSortedPercentage" onInputMethodTextChanged="#handleTextChanged" prefHeight="30.0" prefWidth="48.0" text="25">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -172,7 +172,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#handleSort" prefHeight="31.0" prefWidth="145.0" text="Ordenar">
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleSort" prefHeight="31.0" prefWidth="145.0" text="Ordenar">
                <font>
                   <Font size="15.0" />
                </font>
@@ -190,5 +190,10 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Label alignment="CENTER" layoutX="200.0" layoutY="664.0" prefHeight="17.0" prefWidth="620.0" text="Pase el ratón por encima de los nombres y de las gráficas para conocer más información" textAlignment="CENTER" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
