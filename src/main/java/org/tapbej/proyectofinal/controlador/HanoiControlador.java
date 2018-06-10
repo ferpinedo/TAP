@@ -12,7 +12,7 @@ import javafx.scene.shape.Rectangle;
 import org.tapbej.proyectofinal.modelo.Hanoi;
 
 
-public class HanoiControlador
+public class HanoiControlador extends Controller
 {
 	@FXML
 	private VBox torre1;
@@ -103,4 +103,21 @@ public class HanoiControlador
 
 	}
 
+	@Override
+	void setKeyListener()
+	{
+
+	}
+
+	@Override
+	void setDefaultCloseOperation()
+	{
+		mainApp.getSecondaryStage().setResizable(true);
+	}
+
+	@Override
+	void runSpecificOperations()
+	{
+
+	}
 }
