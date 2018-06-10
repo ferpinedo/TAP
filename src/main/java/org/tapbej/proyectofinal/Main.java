@@ -92,7 +92,7 @@ public class Main extends Application
 			Controller controller = loader.getController();
 			controller.start(this);
 
-			secondaryStage.setMaximized(true);
+//			secondaryStage.setMaximized(true);
 			secondaryStage.setScene(new Scene(ventana));
 			secondaryStage.show();
 			secondaryStage.centerOnScreen();
