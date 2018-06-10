@@ -93,6 +93,7 @@ public class TopicSelectionContoller extends Controller
 		lblTitle.setText("Recursividad");
 		lblDescription.setText(RECURSION_TEXT);
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+		scrollPane.setVvalue(0.0);
 		image.setImage(new Image(mainApp.getClass().getResourceAsStream("iconos/recursionLogo2.png")));
 	}
 
@@ -101,6 +102,7 @@ public class TopicSelectionContoller extends Controller
 		lblTitle.setText("Ordenamiento");
 		lblDescription.setText(SORTING_TEXT);
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+		scrollPane.setVvalue(0.0);
 		image.setImage(new Image(mainApp.getClass().getResource("iconos/sortingLogo2.png").toExternalForm()));
 	}
 
@@ -109,6 +111,7 @@ public class TopicSelectionContoller extends Controller
 		lblTitle.setText("Búsqueda");
 		lblDescription.setText(SEARCH_TEXT);
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+		scrollPane.setVvalue(0.0);
 		image.setImage(new Image(mainApp.getClass().getResource("iconos/searchLogo2.png").toExternalForm()));
 	}
 
