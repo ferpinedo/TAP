@@ -7,6 +7,7 @@ import javafx.animation.Timeline;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.control.Tooltip;
 import javafx.util.Duration;
 import org.tapbej.proyectofinal.util.Sorter;
 
@@ -46,6 +47,8 @@ public class SortingChart extends BarChart
 		this.sorter = new Sorter(values, method);
 		graphArray();
 		setDefaults();
+		setTooltip("Presiona ordenar para que conozcas" +
+				     "\nel algoritmo de ordenamiento");
 	}
 
 	/**
@@ -55,6 +58,7 @@ public class SortingChart extends BarChart
 	public void sort(int interval)
 	{
 		sorter.sort();
+		setTooltip("Algoritmo en proceso...");
 		Deque<Movement> movements = sorter.getMovements();
 
 		timeline = new Timeline(new KeyFrame(Duration.millis(interval), action ->
@@ -66,7 +70,6 @@ public class SortingChart extends BarChart
 					timeline.stop();
 					System.out.println("Timeline stopped");
 					this.getData().clear();
-					hideTime();
 					stop = false;
 				}
 
@@ -80,7 +83,7 @@ public class SortingChart extends BarChart
 				{
 					bars[cursorBar].setColor(defaultColor);
 					colorizeAllBars(finishColor);
-					showStats(sorter.getTranscurredMicros(), sorter.getTotalMovements());
+					showStats((int)sorter.getTranscurredMicros(), sorter.getTotalMovements());
 					timeline.stop();
 				}
 			} catch (Exception e)
@@ -152,9 +155,24 @@ public class SortingChart extends BarChart
 	 * @param microsPassed til bar chart sorted
 	 * @param movements used to sort the bar chart
 	 */
-	public void showStats(double microsPassed, long movements)
+	public void showStats(int microsPassed, long movements)
 	{
-		this.setTitle(microsPassed + "micros, en " + movements + " movimientos");
+		setTooltip("Total de movimientos: "+ movements);
+		this.setStyle("-fx-font-size: 9px;");
+		this.setTitle("Tiempo: " + microsPassed + "µs");
+	}
+
+	/**
+	 * Sets a tooltip text to the barchart
+	 *
+	 * @param text to display on the tooltip
+	 */
+	private void setTooltip(String text)
+	{
+		Tooltip tooltip = new Tooltip();
+		tooltip.setText(text);
+		tooltip.setStyle("-fx-font-size: 13;");
+		Tooltip.install(this, tooltip);
 	}
 
 	/**
