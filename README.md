@@ -2,6 +2,11 @@
 Por sus siglas significa Tópicos Avanzados de Programación y consiste en un proyecto de algoritmos de ordenamiento,
 recursividad y búsqueda.
 
+## Ejemplos
+![](samples/Hanoi.gif)
+![](samples/N-Queens.gif)
+![](samples/Sorting.gif)
+
 Autores:
 * Alejandro Alberto Ramírez Vilchis
 * Fernando Josué Pinedo Orta
